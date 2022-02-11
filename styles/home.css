@@ -1,0 +1,28 @@
+#navtitle
+{
+background-color: #FFD3DE;
+}
+body{
+  font-family: 'Montserrat', sans-serif;
+
+}
+span{
+  color: black;
+}
+
+h1{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+
+.navbar-brand{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+
+}
+i{
+  color: black;
+}
