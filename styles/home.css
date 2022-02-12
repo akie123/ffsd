@@ -1,6 +1,6 @@
 #navtitle
 {
-background-color: #FFD3DE;
+background-color: #F9E4D4;
 }
 body{
   font-family: 'Montserrat', sans-serif;
@@ -8,6 +8,7 @@ body{
 }
 span{
   color: black;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1{
@@ -23,6 +24,46 @@ h1{
   font-weight: bold;
 
 }
-i{
-  color: black;
+.container-fluid{
+padding: 3% 8% 15%;
+}
+.navbar{
+  padding: 0 0 0 0;
+}
+.head-margin{
+  margin-top: 20px;
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+.im{
+  padding-top: 30px;
+  width: 40%;
+  transform: rotate(25deg);
+  position: absolute;
+  right: 30%;
+
+}
+.but{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media (max-width: 1028px) {
+
+#navtitle{
+  text-align: center;
+}
+
+  .im{
+    padding-top: 100px;
+      position: static;
+      transform: rotate(0deg);
+      width: 30%;
+
+  }
+
+}
+.ck{
+
+  font-family: 'Source Serif 4', sans-serif;
+
 }
