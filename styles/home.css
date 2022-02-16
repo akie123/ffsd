@@ -1,15 +1,20 @@
 #navtitle
 {
-background-color: #F9E4D4;
+/* background-color: #F9E4D4; */
+background-color: #655D8A;
 }
 body{
   font-family: 'Montserrat', sans-serif;
 
 }
-span{
+
+.navbar-dark .nav-item .nav-link{
   color: black;
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Source Serif 4', sans-serif;
+  font-size: 1.2rem;
+
 }
+
 
 h1{
   font-family: 'Montserrat', sans-serif;
@@ -18,14 +23,18 @@ h1{
 }
 
 
-.navbar-brand{
-  font-family: 'Ubuntu', sans-serif;
+
+.navbar-dark .navbar-brand{
+
   font-size: 3.5rem;
   font-weight: bold;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+
 
 }
 .container-fluid{
-padding: 3% 8% 15%;
+padding: 3% 8% 5%;
 }
 .navbar{
   padding: 0 0 0 0;
@@ -57,7 +66,8 @@ padding: 3% 8% 15%;
     padding-top: 100px;
       position: static;
       transform: rotate(0deg);
-      width: 30%;
+      width: 40%;
+
 
   }
 
@@ -66,4 +76,10 @@ padding: 3% 8% 15%;
 
   line-height: 1.5;
 
+}
+#features{
+
+  background-color:#7897AB;
+  position: relative;
+  z-index: 1;
 }
