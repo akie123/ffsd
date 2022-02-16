@@ -10,6 +10,7 @@ body{
 .navbar-dark .nav-item .nav-link {
     color: black;
     font-family: 'Source Serif 4', sans-serif;
+     font-family: 'Ubuntu', sans-serif;
     font-size: 1.2rem;
 }
 
@@ -24,6 +25,7 @@ h1 {
     font-weight: bold;
     color: black;
     font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Ubuntu', sans-serif; */
 }
 
 .container-fluid {
@@ -82,7 +84,7 @@ h1 {
 }
 
 #working {
-
+    padding: 5% 10%;
     background-color: white;
     position: relative;
     z-index: 1;
@@ -108,7 +110,7 @@ h2{
 
 }
 .fas:hover{
-  color: #ff4c68;
+  color: black;
 }
 h3{
   font-family: 'Montserrat', sans-serif;
@@ -116,5 +118,5 @@ h3{
     line-height: 1.5;
   color: black;
 
-  
+
 }
