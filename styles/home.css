@@ -84,16 +84,27 @@ h1 {
 }
 
 #working {
-    padding: 5% 10%;
+    padding: 2% 10%;
     background-color: white;
     position: relative;
     z-index: 1;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
 h2{
   font-size: 2rem;
   line-height: 1.5;
   text-align: center;
+}
+.work{
+  padding-bottom:  4%;
+  font-size: 2rem;
+    line-height: 1.5;
+     font-family: 'Ubuntu', sans-serif;
+     font-weight: bold;
+
+
+
 }
 
 
