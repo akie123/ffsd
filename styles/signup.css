@@ -1,109 +1,69 @@
-.body {
-    color: #fff;
-    background: #655d8a;
-    font-family: 'Roboto', sans-serif;
-}
+#login{
+  background-color:#655D8A;
+  font-family: 'Montserrat', sans-serif;
 
-.form-control {
-    height: 40px;
-    box-shadow: none;
-    color: #000102;
 }
+.container-fluid {
+    padding: 3% 8% 5%;
+    width: 75%;
 
-.form-control:focus {
-    border-color: #5cb85c;
 }
+.img{
+  width: 100%;
+  height: 100%;
 
-.form-control,
-.btn {
-    border-radius: 3px;
 }
-
-.signup-form {
-    width: 450px;
-    margin: 0 auto;
-    padding: 30px 0;
-    font-size: 15px;
+.card{
+  border-radius: 1rem;
 }
+.one{
+  padding: 5% 5% 5% 5% ;
 
-.signup-form h2 {
-    color: #ffffff;
-    margin: 0 0 15px;
-    position: relative;
-    text-align: center;
+  text-align: left;
 }
-
-.signup-form h2:before,
-.signup-form h2:after {
-    content: "";
-    height: 2px;
-    width: 30%;
-    background: #d4d4d4;
-    position: absolute;
-    top: 50%;
-    z-index: 2;
+.head
+{
+  padding-bottom: 5%;
+  text-align: center;
 }
-
-.signup-form h2:before {
-    left: 0;
+.bod-1{
+  padding-top: 5%;
 }
-
-.signup-form h2:after {
-    right: 0;
+h4
+{
+  font-family: 'Source Serif 4', sans-serif;
+  letter-spacing: .9px;
 }
-
-.signup-form .hint-text {
-    color: rgb(0, 0, 0);
-    margin-bottom: 30px;
-    text-align: center;
+.log{
+ padding-top:  10%;
+ font-family: 'Source Serif 4', sans-serif;
+ text-align: center;
 }
-
-.signup-form form {
-    color: rgb(0, 4, 255);
-    border-radius: 3px;
-    margin-bottom: 15px;
-    background: #0c0c0c;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 30px;
+.but{
+  padding-top: 10%;
+  
+  text-align: center;
 }
-
-.signup-form .form-group {
-    margin-bottom: 20px;
+.extra{
+  padding-top: 10%;
+  padding-bottom: 25%;
+  text-decoration: none;
+  color: #393f81;
+  font-size: 1.1rem;
 }
-
-.signup-form input[type="checkbox"] {
-    margin-top: 3px;
+.forgot-1{
+  color: gray;
+  font-size: 1rem;
 }
-
-.signup-form .btn {
-    font-size: 16px;
-    font-weight: bold;
-    min-width: 140px;
-    outline: none !important;
+.forgot-1:hover{
+  color: black;
+  text-decoration: none;
 }
+.forgot-2{
+  color: gray;
 
-.signup-form .row div:first-child {
-    padding-right: 10px;
 }
-
-.signup-form .row div:last-child {
-    padding-left: 10px;
-}
-
-.signup-form a {
-    color: rgb(0, 0, 0);
-    text-decoration: underline;
-}
-
-.signup-form a:hover {
-    text-decoration: none;
-}
-
-.signup-form form a {
-    color: #5cb85c;
-    text-decoration: none;
-}
-
-.signup-form form a:hover {
-    text-decoration: underline;
+.forgot-2:hover{
+  color: black;
+  text-decoration: none;
 }
