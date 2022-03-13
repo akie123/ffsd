@@ -9,7 +9,7 @@ body {
 
 .container-fluid {
     padding: 3% 8% 5%;
-    width: 75%;
+    width: 80%;
 }
 
 .img {
@@ -24,7 +24,7 @@ body {
 .one {
     padding: 5% 5% 5% 5%;
     text-align: left;
-    /* display: none; */
+     /* display: none;  */
 }
 
 .head {
@@ -68,7 +68,7 @@ span {
 }
 
 .ic {
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .constrain {
@@ -81,3 +81,41 @@ span {
 .list:hover {
     color: black;
 }
+.three{
+    padding:5% 5% 5% 5%;
+    display: none;
+  }
+
+  .bod-3{
+    text-align: center;
+  }
+
+  .four{
+    padding:5% 5% 5% 5%;
+    text-align: left;
+     display: none;
+  }
+
+  .bod-4{
+    text-align: center;
+
+  }
+
+  .five{
+    padding:5% 5% 5% 5%;
+    text-align: left;
+     display: none;
+  }
+
+  .bod-5{
+      text-align: center;
+  }
+  .six{
+    padding:5% 5% 5% 5%;
+    text-align: left;
+     display: none;
+  }
+
+  .bod-6{
+      text-align: center;
+  }
