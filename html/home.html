@@ -19,7 +19,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/234be40154.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="..\styles\home.css">
+  <link rel="stylesheet" href="/styles/home.css">
 
 
 </head>
@@ -51,13 +51,13 @@
               <a class="nav-link" href="#working"> Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href=""> Testimonial</a>
+              <a class="nav-link" href="#testimonials"> Testimonial</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Contact </a>
+              <a class="nav-link" href="#contact_us">Contact </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="signin.html">Login </a>
+              <a class="nav-link" href="/signin">Login </a>
             </li>
 
 
@@ -68,7 +68,7 @@
 
         <div class="col-lg-6  ">
           <h1 class="head-margin">E Clinic -The healthcare consultation service. </h1>
-          <h5>Consult a doctor online from anywhere, anytime!</h2>
+          <h5>Consult a doctor online from anywhere, anytime!</h5>
             <button type="button but" class="btn btn-dark btn-lg but"> <i class="fa-solid fa-user-doctor"></i> Consult Now </button>
             <div class="row ">
 
@@ -112,7 +112,7 @@
         </div>
 
         <div class="col-lg-6  ">
-          <img class="im" src="..\images\PicApp - Apple iPhone X.png" alt="doc">
+          <img class="im" src="\images\PicApp - Apple iPhone X.png" alt="doc">
         </div>
 
       </div>
@@ -150,7 +150,119 @@
 
     </div>
   </section>
+  <section id="testimonials">
 
+    <div id="carouselExampleControls" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2 class="testimonial-text">I don't normally talk to doctors online. This is the first time and I have to say
+            it was a good experience. The website is so awesome! will even recommend to my friends.</h2>
+
+              <img class="im1"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqDYaKUr5aJ7aLZCSRwiHD2qA5Bzapw3RcrEurOMM9R3pOZnZInhHAv8WvNSLrkE5pyYU&usqp=CAU"
+                alt="">
+              <em>Lili</em>
+
+
+        </div>
+
+        <div class="carousel-item">
+          <h2 class="testimonial-text">I had been to an offline doctor many times I must say the experience was almost
+            similar very satisfied with the experience.
+          </h2>
+          <img class="im1"
+            src="https://media.istockphoto.com/photos/portrait-of-young-woman-smiling-picture-id1304581885?b=1&k=20&m=1304581885&s=170667a&w=0&h=B7KElxD35m6lKn6R7aeKb70Lyft_fpf6CkuXRdUyBzI="
+            alt="">
+          <em>Mili</em>
+        </div>
+
+        <div class="carousel-item">
+          <h2 class="testimonial-text">It's my first time consulting a doctor online.Never felt it would be this
+            easy.The website is very easy to use in the sense very easy to navigate.</h2>
+          <img class="im1"
+            src="https://media.istockphoto.com/photos/portrait-of-a-young-man-picture-id1318928248?b=1&k=20&m=1318928248&s=170667a&w=0&h=ivbqNy3kJPwlZoJ6BUa8fpAzaeSBS8Np3erT2ddm0QU="
+            alt="">
+          <em>Lamy</em>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </section>
+  <section id="contact_us">
+      <div class="container-fluid cont">
+        <center>
+          <h4>Drop Us a Message</h4>
+        </center>
+        <div class="row">
+
+          <div class="col-lg-6 temp">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0070/7032/files/how-to-write-an-about-us-wip1.png?format=jpg&quality=90&v=1618511825"
+              class="cimg">
+          </div>
+          <div class="col-lg">
+            <form>
+              <div class="row">
+
+                <div class="col-md-6">
+
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Your Email *">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name1" placeholder="Your Name *">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name2" placeholder="Your Phone Number *">
+                  </div>
+
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <textarea class="form-control" id="text-something"
+                      placeholder="Feel free to drop us a suggestion or write your problem"
+                      style="width : 100%;height : 200px"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <button class="btn contbtn" type="submit">Send Message</button>
+                  </div>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="f-section" id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fa-brands fa-github"></i>
+      <i class="social-icon fa-brands fa-linkedin"></i>
+      <p>© Copyright 2022 E-Clinic</p>
+    </div>
+  </footer>
 
 
 

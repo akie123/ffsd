@@ -5,9 +5,11 @@
 
 }
 .fixed{
-    width: 140px;
+    width: 180px;
     background-color: #655D8A;
+
 }
+
 .one{
 
 height: 100vh;
@@ -31,6 +33,7 @@ strong{
 .list-group-flush .list-group-item{
 
   background-color:  #655D8A;
+
   font-family:  'Nunito', sans-serif;
 color: black;
 padding: 0;
@@ -44,11 +47,6 @@ line-height: 1.5rem;
 
 }
 
-.logout{
-  position: absolute;
-  bottom: 1%;
-
-}
 .bar{
 
   font-size: 2rem;
@@ -56,5 +54,38 @@ line-height: 1.5rem;
 
 }
 .bar:hover{
-  color:  #655D8A;
+  color: white;
 }
+
+.tab1{
+  /* padding-top: 3%; */
+}
+.booking{
+
+  padding-left: 3%;
+  padding-top: 3%;
+  width: 80%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+.tbody{
+  /* display: block; */
+
+  max-height: 100px;
+  overflow-y:  auto;
+}
+
+.but12{
+  padding-top: 2%;
+padding-bottom: 3%;
+
+  }
+  .btn-app{
+    background-color: #655D8A;
+
+
+  }
+  .btn-app:hover{
+    background-color:  #711A75;
+
+  }

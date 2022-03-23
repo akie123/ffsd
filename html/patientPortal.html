@@ -19,7 +19,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/234be40154.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="..\styles\patientportal.css">
+  <link rel="stylesheet" href="..\public\styles\patientportal.css">
 </head>
 
 <body>
@@ -43,9 +43,8 @@
           <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-calendar-check fa-fw"></i> Book Appointment</a>
           <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment</a>
           <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-prescription fa-fw"></i>Prescriptions</a>
-          <div class="logout">
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
-          </div>
+          <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
+
 
 
 
@@ -57,78 +56,155 @@
 
 </div>
     <div class="col">
-      
+
+<div class="booking">
+  <h1> Book Doctor Now! </h1>
+  <a href="#">Click here to get doctor suggestion based on symptoms</a>
+  <br><br>
+    <input class="form-control" id="Input" type="text" placeholder="Search..">
+    <br>
+<div class="tab1" style=" max-height: 450px;overflow-y: auto;">
+
+
+    <table class="table table-bordered table1">
+      <thead>
+        <tr>
+          <th>DoctorId</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Qualification</th>
+          <th>Department</th>
+          <th>Experience</th>
+        </tr>
+      </thead>
+      <tbody id="myTable" class="tbody">
+        <tr>
+          <td>1</td>
+          <td>Doe</td>
+          <td>M </td>
+          <td>Mbbs MS - Obstetrics & Gynaecology</td>
+          <td>Obstetrics</td>
+          <td>18</td>
+
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>moe</td>
+          <td>M </td>
+          <td>Mbbs MS - Obstetrics & Gynaecology</td>
+          <td>Obstetrics</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Soe</td>
+          <td>M </td>
+          <td>Mbbs MS - Obstetrics & Gynaecology</td>
+          <td>Obstetrics</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Loe</td>
+          <td>M </td>
+          <td>Mbbs MS - Obstetrics & Gynaecology</td>
+          <td>Obstetrics</td>
+          <td>18</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+</div>
+
+<form>
+  <div class="form-group">
+    <label for="docid">Doctor-Id</label>
+    <input type="text" class="form-control" id="docid"  placeholder="Enter DoctorId">
+
+
+  </div>
+  <div class="form-group">
+    <label for="date1">Date</label>
+    <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
+  </div>
+  <div class="form-group">
+    <label for="slot1">Select Slot</label>
+   <select class="form-control" id="slot1" >
+     <option disabled selected hidden>Select Available slots</option>
+     <option>4:00-4:20 pm</option>
+     <option>4:25-4:45 pm</option>
+     <option>4:50-5:10 pm</option>
+     <option>5:15-5:35 pm</option>
+
+   </select>
+  </div>
+
+
+
+  <div class="but12">
+      <button type="submit" class="btn btn-primary btn-app">Confirm Slot</button>
+  </div>
+
+</form>
+
+</div>
+
+
+        <!-- <p>Type  to search the table for first names, last names or emails:</p>
+        <div class="container-fluid">
+
+          <input class="form-control" id="myInput" type="text" placeholder="Search..">
+          <br>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Doctor Id</th>
+
+                <th>Name</th>
+                <th>Department</th>
+                <th>Experience</th>
+
+              </tr>
+            </thead>
+            <tbody id="myTable">
+
+              <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@mail.com</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@greatstuff.com</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Anja</td>
+                <td>Ravendale</td>
+                <td>a_r@test.com</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+        </div> -->
+
+
+
+
       </div>
 </div>
-<!--
-    <div class="row one">
-      <div class="col-4 col-sm-3 col-md-2 sidebar">
-
-        <div class="logo">
-          <h1><strong>E-Clinic</strong></h1>
-        </div>
-
-        <div class="elements">
-
-          <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fas fa-chart-line"></i>
-              <span> </span>Dash-Board
-            </a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-info"></i>User Info </a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-clock-rotate-left"></i> Past Appointment</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-prescription"></i>Prescriptions</a>
-            <div class="logout">
-              <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i>Log-Out</a>
-            </div>
-
-
-
-
-          </div>
-
-        </div>
-
-
-
-      </div>
-
-
-
-      <div class="col-8 col-sm-9 col-md-10 ">
-
-
-        <div class="row two">
-          <div class="col-6">
-            <a href="#"><i class="fas fa-bars bar"></i></a>
-
-          </div>
-          <div class="col-6 img">
-
-<div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-
-
-
-
-
-
-    </div> -->
-
-
-
-
-
 
 
 
@@ -140,7 +216,7 @@
 
 
 
-<script src="..\index.js " charset="utf-8 "></script>
+<script src="..\public\patientportal.js " charset="utf-8 "></script>
 </body>
 
 </html>
