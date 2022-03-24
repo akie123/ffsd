@@ -28,183 +28,212 @@
   <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark">
       <a href="#" id="strip"><i class="fas fa-bars bar"></i></a>
-     <a class="navbar-brand" href="#">E-Clinic</a>
+      <a class="navbar-brand" href="#">E-Clinic</a>
 
-</nav>
-<div class="row one">
-    <div class="fixed" id="elements">
-      <div class="elements">
+    </nav>
+    <div class="row one">
+      <div class="fixed" id="elements">
+        <div class="elements">
 
-        <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action">
-            <i class="fas fa-chart-line"></i> Dash-Board
-          </a>
-          <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-info fa-fw"></i>User Info </a>
-          <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-calendar-check fa-fw"></i> Book Appointment</a>
-          <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment</a>
-          <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-prescription fa-fw"></i>Prescriptions</a>
-          <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="fas fa-chart-line fa-fw"></i>Upcomming Appointments
+            </a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-info fa-fw"></i>Info </a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-calendar-check fa-fw"></i> Book Appointment</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-calendar-check fa-fw"></i> Cancle Appointment</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-clock-rotate-left fa-fw"></i> Messages & Permissions</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-prescription fa-fw"></i>Prescriptions</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
 
 
+
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="col">
+
+        <div class="booking">
+          <h1> Book Doctor Now! </h1>
+          <a href="#">Click here to get doctor suggestion based on symptoms</a>
+          <br><br>
+          <input class="form-control" id="Input" type="text" placeholder="Search..">
+          <br>
+          <div class="tab1" style=" max-height: 450px;overflow-y: auto;">
+
+
+            <table class="table table-bordered table1">
+              <thead>
+                <tr>
+                  <th>DoctorId</th>
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Qualification</th>
+                  <th>Department</th>
+                  <th>Experience</th>
+                </tr>
+              </thead>
+              <tbody id="myTable" class="tbody">
+                <tr>
+                  <td>1</td>
+                  <td>Doe</td>
+                  <td>M </td>
+                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
+                  <td>Obstetrics</td>
+                  <td>18</td>
+
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>moe</td>
+                  <td>M </td>
+                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
+                  <td>Obstetrics</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Soe</td>
+                  <td>M </td>
+                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
+                  <td>Obstetrics</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Loe</td>
+                  <td>M </td>
+                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
+                  <td>Obstetrics</td>
+                  <td>18</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <form>
+            <div class="form-group">
+              <label for="docid">Doctor-Id</label>
+              <input type="text" class="form-control" id="docid" placeholder="Enter DoctorId">
+
+
+            </div>
+            <div class="form-group">
+              <label for="date1">Date</label>
+              <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
+            </div>
+            <div class="form-group">
+              <label for="slot1">Select Slot</label>
+              <select class="form-control" id="slot1">
+                <option disabled selected hidden>Select Available slots</option>
+                <option>4:00-4:20 pm</option>
+                <option>4:25-4:45 pm</option>
+                <option>4:50-5:10 pm</option>
+                <option>5:15-5:35 pm</option>
+
+              </select>
+            </div>
+
+
+
+            <div class="but12">
+              <button type="submit" class="btn btn-primary btn-app">Confirm Slot</button>
+            </div>
+
+          </form>
+
+        </div>
+
+
+        <!-- upcomming       -->
+
+        <div class="upcomming">
+          <h1> Hey user , Welcome Back! </h1>
+          <br>
+          <h5>Next Appointment</h5>
+          <p class="text-muted">You can access consultation page before 5 mins of appointment time</p>
+
+          <h5><i class="fas fa-user-md fa-fw"></i> Dr.Random</h5>
+          <hr>
+          <h6><i class="fas fa-calendar fa-fw"></i> 10:30-10:40 pm <br>
+            <p class="text-muted">Monday,25 March 2022</p>
+          </h6>
+
+          <div class="but12">
+            <button type="button" class="btn btn-primary btn-app">Consult Now</button>
+          </div>
+
+
+
+
+
+
+          <br>
+
+          <h3>You'r upcomming Appointments are here</h3>
+
+          <br>
+          <input class="form-control" id="Input1" type="text" placeholder="Search..">
+          <br>
+          <div class="tab1" style=" max-height: 450px;overflow-y: auto;">
+
+
+            <table class="table table-bordered table1">
+              <thead>
+                <tr>
+
+                  <th>Doctor Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+
+                </tr>
+              </thead>
+              <tbody id="myTable1" class="tbody">
+                <tr>
+                  <td>Doe</td>
+                  <td>27/11/2021</td>
+                  <td>7:00-7:20 pm</td>
+
+                </tr>
+                <tr>
+                  <td>Doe</td>
+                  <td>27/11/2021</td>
+                  <td>7:00-7:20 pm</td>
+                </tr>
+                <tr>
+                  <td>Doe</td>
+                  <td>27/11/2021</td>
+                  <td>7:00-7:20 pm</td>
+                </tr>
+                <tr>
+                  <td>Doe</td>
+                  <td>27/11/2021</td>
+                  <td>7:00-7:20 pm</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          <br>
+          <br>
 
 
 
         </div>
 
-    </div>
-
-
-</div>
-    <div class="col">
-
-<div class="booking">
-  <h1> Book Doctor Now! </h1>
-  <a href="#">Click here to get doctor suggestion based on symptoms</a>
-  <br><br>
-    <input class="form-control" id="Input" type="text" placeholder="Search..">
-    <br>
-<div class="tab1" style=" max-height: 450px;overflow-y: auto;">
-
-
-    <table class="table table-bordered table1">
-      <thead>
-        <tr>
-          <th>DoctorId</th>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Qualification</th>
-          <th>Department</th>
-          <th>Experience</th>
-        </tr>
-      </thead>
-      <tbody id="myTable" class="tbody">
-        <tr>
-          <td>1</td>
-          <td>Doe</td>
-          <td>M </td>
-          <td>Mbbs MS - Obstetrics & Gynaecology</td>
-          <td>Obstetrics</td>
-          <td>18</td>
-
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>moe</td>
-          <td>M </td>
-          <td>Mbbs MS - Obstetrics & Gynaecology</td>
-          <td>Obstetrics</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Soe</td>
-          <td>M </td>
-          <td>Mbbs MS - Obstetrics & Gynaecology</td>
-          <td>Obstetrics</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Loe</td>
-          <td>M </td>
-          <td>Mbbs MS - Obstetrics & Gynaecology</td>
-          <td>Obstetrics</td>
-          <td>18</td>
-        </tr>
-
-      </tbody>
-    </table>
-
-</div>
-
-<form>
-  <div class="form-group">
-    <label for="docid">Doctor-Id</label>
-    <input type="text" class="form-control" id="docid"  placeholder="Enter DoctorId">
-
-
-  </div>
-  <div class="form-group">
-    <label for="date1">Date</label>
-    <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
-  </div>
-  <div class="form-group">
-    <label for="slot1">Select Slot</label>
-   <select class="form-control" id="slot1" >
-     <option disabled selected hidden>Select Available slots</option>
-     <option>4:00-4:20 pm</option>
-     <option>4:25-4:45 pm</option>
-     <option>4:50-5:10 pm</option>
-     <option>5:15-5:35 pm</option>
-
-   </select>
-  </div>
-
-
-
-  <div class="but12">
-      <button type="submit" class="btn btn-primary btn-app">Confirm Slot</button>
-  </div>
-
-</form>
-
-</div>
-
-
-        <!-- <p>Type  to search the table for first names, last names or emails:</p>
-        <div class="container-fluid">
-
-          <input class="form-control" id="myInput" type="text" placeholder="Search..">
-          <br>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Doctor Id</th>
-
-                <th>Name</th>
-                <th>Department</th>
-                <th>Experience</th>
-
-              </tr>
-            </thead>
-            <tbody id="myTable">
-
-              <tr>
-                <td>1</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@mail.com</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@greatstuff.com</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Anja</td>
-                <td>Ravendale</td>
-                <td>a_r@test.com</td>
-              </tr>
-            </tbody>
-          </table>
-
-
-
-        </div> -->
-
-
 
 
       </div>
-</div>
+    </div>
 
 
 
@@ -216,7 +245,7 @@
 
 
 
-<script src="..\public\patientportal.js " charset="utf-8 "></script>
+  <script src="..\public\patientportal.js " charset="utf-8 "></script>
 </body>
 
 </html>

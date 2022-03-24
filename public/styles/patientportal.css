@@ -25,7 +25,7 @@ strong{
 }
 
 .elements{
-    padding-top: 15%;
+  
     padding-left: 2.5%;
       text-align: left;
 
@@ -66,6 +66,7 @@ line-height: 1.5rem;
   padding-top: 3%;
   width: 80%;
     font-family: 'Montserrat', sans-serif;
+    /*display: none;*/
 
 }
 .tbody{
@@ -88,4 +89,11 @@ padding-bottom: 3%;
   .btn-app:hover{
     background-color:  #711A75;
 
+  }
+  .upcomming{
+    display: none;
+    padding-left: 3%;
+    padding-top: 1%;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
   }
