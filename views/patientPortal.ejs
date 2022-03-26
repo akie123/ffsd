@@ -24,11 +24,11 @@
 
 <body>
 
-
+<%let ak='aalhad'%>
   <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark">
       <a href="#" id="strip"><i class="fas fa-bars bar"></i></a>
-      <a class="navbar-brand" href="#">E-Clinic</a>
+      <a class="navbar-brand" href="#">E-Clinic </a>
 
     </nav>
     <div class="row one">
@@ -79,39 +79,16 @@
                 </tr>
               </thead>
               <tbody id="myTable2" class="tbody">
+              <% data.forEach(function(doc){  %>
                 <tr>
-                  <td>1</td>
-                  <td>Doe</td>
-                  <td>M </td>
-                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
-                  <td>Obstetrics</td>
-                  <td>18</td>
-
+                  <td><%= doc._id %></td>
+                  <td><%= doc.name %></td>
+                  <td><%= doc.gender %></td>
+                  <td><%= doc.qualification %></td>
+                  <td><%= doc.department %></td>
+                  <td><%= doc.experience %></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>moe</td>
-                  <td>M </td>
-                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
-                  <td>Obstetrics</td>
-                  <td>18</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Soe</td>
-                  <td>M </td>
-                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
-                  <td>Obstetrics</td>
-                  <td>18</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Loe</td>
-                  <td>M </td>
-                  <td>Mbbs MS - Obstetrics & Gynaecology</td>
-                  <td>Obstetrics</td>
-                  <td>18</td>
-                </tr>
+              <%})%>
 
               </tbody>
             </table>
@@ -155,7 +132,7 @@
         <!-- upcomming       -->
 
         <div class="upcoming" id="upcoming">
-          <h1> Hey user , Welcome Back! </h1>
+          <h1> Hey <%=pdata.name%> , Welcome Back! </h1>
           <br>
           <h5>Next Appointment</h5>
           <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
@@ -177,7 +154,7 @@
 
           <br>
 
-          <h3>You'r upcomming Appointments are here</h3>
+          <h3>You'r upcoming Appointments are here</h3>
 
           <br>
           <input class="form-control" id="Input1" type="text" placeholder="Search..">
@@ -385,7 +362,7 @@
                     <h5>Name</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="name" class="form-control">
+                    <input type="text" id="name" class="form-control" value="<%=pdata.name%>">
                   </div>
                 </div>
               </div>
@@ -397,7 +374,7 @@
                     <h5>Phone Number</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="phonenum" class="form-control">
+                    <input type="text" id="phonenum" class="form-control" value="<%=pdata.phone%>">
                   </div>
                 </div>
               </div>
@@ -408,7 +385,7 @@
                     <h5>Aadhaar Number</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="phonenumber" class="form-control">
+                    <input type="text" id="adhar" class="form-control" value="<%=pdata.adhar%>">
                   </div>
                 </div>
               </div>
@@ -420,7 +397,7 @@
                     <h5>D.O.B</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="date" id="dob" class="form-control">
+                    <input type="date" id="dob" class="form-control" value="<%=(pdata.dob)%>">
                   </div>
                 </div>
               </div>
@@ -431,8 +408,8 @@
                     <h5>Gender</h5>
                   </div>
                   <div class="col-sm-9">
-                    <select class="form-control" name="gender" id="gender">
-                      <option value="none" hidden selected disabled></option>
+                    <select class="form-control" name="gender" id="gender" value="<%=pdata.gender%>">
+
                       <option value="Male">Male</option>
                       <option value="Fe-Male">Female</option>
                     </select>
@@ -446,7 +423,8 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <h5>Allergies</h5>
-                    <textarea id="allergies" class="form-control" style="height : 150px"></textarea>
+                    <%dat=JSON.stringify(new Date(pdata.allergies)).slice(1,11)%>
+                    <textarea id="allergies" class="form-control" style="height : 150px"><%=pdata.allergies%> <%=dat%></textarea>
                   </div>
 
                 </div>
@@ -455,7 +433,7 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <h5>Past Medical History</h5>
-                    <textarea id="m_history" class="form-control" style="height : 150px"></textarea>
+                    <textarea id="m_history" class="form-control" style="height : 150px"><%=pdata.medicalhistory%></textarea>
                   </div>
                 </div>
               </div>

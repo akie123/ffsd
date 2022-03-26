@@ -90,14 +90,14 @@ padding-bottom: 3%;
     background-color:  #711A75;
 
   }
-  .upcomming{
-    display: none;
+  .upcoming{
+    /*display: none;*/
     padding-left: 3%;
     padding-top: 1%;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
   }
-  .cancle{
+  .cancel{
     padding-left: 3%;
     padding-top: 3%;
     width: 80%;
@@ -111,5 +111,12 @@ padding-bottom: 3%;
     padding-top: 3%;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
-     /*display: none;*/
+     display: none;
+  }
+  .info{
+    padding-left: 3%;
+    padding-top: 3%;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    display: none;
   }

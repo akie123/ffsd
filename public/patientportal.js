@@ -30,6 +30,7 @@ $(document).ready(function(){
         });
     });
 });
+
 document.getElementById("strip").addEventListener("click", function() {
 
 
@@ -43,5 +44,51 @@ document.getElementById("strip").addEventListener("click", function() {
 
     }
 
+
+})
+document.getElementById("a").addEventListener("click", function() {
+
+    document.getElementById('cancel').style.display='none';
+    document.getElementById('booking').style.display='none';
+    document.getElementById('past-appointment').style.display='none';
+    document.getElementById('info').style.display='none';
+    document.getElementById('upcoming').style.display='block';
+
+})
+document.getElementById("b").addEventListener("click", function() {
+
+    document.getElementById('cancel').style.display='none';
+    document.getElementById('booking').style.display='none';
+    document.getElementById('past-appointment').style.display='none';
+    document.getElementById('info').style.display='block';
+    document.getElementById('upcoming').style.display='none';
+
+})
+document.getElementById("d").addEventListener("click", function() {
+
+    document.getElementById('past-appointment').style.display='none';
+    document.getElementById('cancel').style.display='none';
+    document.getElementById('upcoming').style.display='none';
+    document.getElementById('info').style.display='none';
+    document.getElementById('booking').style.display='block';
+
+})
+document.getElementById("e").addEventListener("click", function() {
+
+
+    document.getElementById('upcoming').style.display='none';
+    document.getElementById('booking').style.display='none';
+    document.getElementById('past-appointment').style.display='none';
+    document.getElementById('info').style.display='none';
+    document.getElementById('cancel').style.display='block';
+})
+document.getElementById("f").addEventListener("click", function() {
+
+
+    document.getElementById('upcoming').style.display='none';
+    document.getElementById('booking').style.display='none';
+    document.getElementById('cancel').style.display='none';
+    document.getElementById('info').style.display='none';
+    document.getElementById('past-appointment').style.display='block';
 
 })

@@ -38,24 +38,24 @@
           </div>
           <div class="col-lg-6 col-md-6">
             <div class="card-body">
-              <form class="" action="index.html" method="post">
+              <form class="" action="/signin" method="post">
 
                 <h4>Sign Into Your Account</h4>
                   <div class="log">
                     <div class="form-group">
 
-                      <input type="email" class="form-control" id="email" placeholder="Email Address">
+                      <input type="email" name="email" class="form-control" id="email" placeholder="Email Address">
                     </div>
                     <div class="form-group">
 
-                      <input type="password" class="form-control" id="password" placeholder="Password">
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     
                   </div>
-                  <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                  <button class="btn btn-dark btn-lg btn-block" id="but" type="button">Login</button>
                   <div class="extra">
                     <a class="forgot-1" href="#">Forgot Password</a>
-                    <p>Don't have a account?<a href="signup.html" class="forgot-2"> Register here</a></p>
+                    <p>Don't have a account?<a href="/signup" class="forgot-2"> Register here</a></p>
 
                   </div>
                   <a href="#!" class="small text-muted">Terms of use.</a>
@@ -80,7 +80,7 @@
   </section>
 
 
-<script src="/index.js" charset="utf-8"></script>
+<script src="/signin.js" charset="utf-8"></script>
 </body>
 
 </html>

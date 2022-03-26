@@ -110,8 +110,21 @@ document.getElementById("but-3").addEventListener("click", async function(e) {
 
 })
 
-document.getElementById("but-4").addEventListener("click", function() {
+document.getElementById("but-4").addEventListener("click", async function(e) {
 
+    e.preventDefault();
+    const rawResponse = await fetch('/signupd', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:document.getElementById('email-1').value,pass1:document.getElementById('pass-1').value,pass2:document.getElementById('pass-2').value,name:document.getElementById('namedoc').value,phno:document.getElementById('phonenum').value,dob:document.getElementById('dobd').value,gender:document.getElementById('genderD').value,adhar:document.getElementById('adhar-card-d').value,qualification:document.getElementById('qualification').value,department:document.getElementById('department').value,experience:document.getElementById('exp').value})
+
+    });
+    const content = await rawResponse.json();
+
+    console.log(content);
     document.getElementById("body-4").style.display = "none";
     document.getElementById("body-6").style.display = "block";
 
