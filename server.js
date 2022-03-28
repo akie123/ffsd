@@ -29,18 +29,22 @@ app.get('/signup',(req,res)=>{
     res.sendFile('views/signup.html',{root:__dirname})
 })
 app.get('/signupd',(req,res)=>{
-    res.sendFile('views/signup.html',{root:__dirname})
+    res.sendFile('views/signupd.html',{root:__dirname})
 })
 app.get('/signin',(req,res)=>{
     res.sendFile('views/signin.html',{root:__dirname})
 })
+app.get('/doctorportal',(req,res)=>{
+    res.sendFile('views/doctorPortal.html',{root:__dirname})
+})
+
 
 app.get('/patientportal',(req,res)=>{
-    // res.sendFile('views/patientportal.ejs',{root:__dirname})
+
 
     Doctor.find({},(err,data)=>{
 
-      Patient.findOne({id:req.cookies.id},(err1,data1)=>{
+      Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
           res.render('patientPortal',{data:data,pdata:data1})
       })
 

@@ -19,6 +19,12 @@ document.getElementById('but').addEventListener("click", async function(e) {
 
     if(content.message==="success")
         window.location.href="/patientportal";
+    else
+    {
+        window.alert('Credential Incorrect,Try again!')
+        document.getElementById('password').value='';
+        document.getElementById('email').value='';
+    }
 
 
 

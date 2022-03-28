@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>User Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comforter&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Source+Serif+4:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/234be40154.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="styles/doctorportal.css">
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="#" id="strip"><i class="fas fa-bars bar"></i></a>
+            <a class="navbar-brand" href="#">E-Clinic</a>
+
+        </nav>
+        <div class="row one">
+            <div class="fixed" id="elements">
+                <div class="elements">
+
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action" onclick="upcoming()">
+                            <i class="fas fa-chart-line fa-fw"></i> Upcoming Schedule
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="info()"><i
+                                class="fa-solid fa-info fa-fw"></i> Info </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="schedulemanager()"><i
+                                class="fa-solid fa-calendar-check fa-fw"></i> Schedule<br>Manager</a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="cancel()"><i
+                                class="fa-solid fa-xmark"></i>
+                            Cancel<br> Appointment</a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="messages()"><i
+                                class="fa-solid fa-message">
+                            </i> Message</a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="pastapp()"><i
+                                class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment <br> and send <br>
+                            Prescription</a>
+                        <br>
+                        <div class="logout">
+                            <a href="#" class="list-group-item list-group-item-action"><i
+                                    class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col container-fluid">
+                <!--Edit Info-->
+                <center>
+                    <div class="info" id="info">
+                        <h1>Edit/View Info</h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>Name</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="name" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>Phone Number</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="phonenumber1" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>Aadhaar Number</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="phonenumber" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>D.O.B</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="date" id="dob" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h4>Qualification*</h4>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="qualification" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h4>Department*</h4>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="department" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>Experience</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <select name="experiece" id="exp" class="form-control">
+                                                <option value="" hidden selected disabled>Select Experience</option>
+                                                <option value="1y">1 year</option>
+                                                <option value="2y">2 Years</option>
+                                                <option value="3y">3 Years</option>
+                                                <option value="4y">4 Years </option>
+                                                <option value="5y">5 Yeats</option>
+                                                <option value="6y">6 Years</option>
+                                                <option value="7y">7 Years</option>
+                                                <option value="8y">8 Years</option>
+                                                <option value="9y">8+ Years</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div classs="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>Gender</h4>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="gender" id="gender">
+                                                <option value="none" hidden selected disabled></option>
+                                                <option value="Male">Male</option>
+                                                <option value="Fe-Male">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h4>Password</h4>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="password1" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h4>Confirm Password</h4>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="password" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-lg btn-block">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </center>
+
+                <!-- Upcoming Appointments-->
+                <div class="upcoming container-fluid" id="upcoming">
+                    <h1> Hey Dr.ABC, Welcome Back!</h1>
+                    <br>
+                    <h5>Next Appointment</h5>
+
+                    <h5><i class="fa-solid fa-user"></i>Patient</h5>
+                    <hr>
+                    <h6><i class="fas fa-calendar fa-fw"></i> 10:30-10:40 pm <br>
+                        <p class="text-muted">Monday,25 March 2022</p>
+                    </h6>
+
+                    <div class="but12">
+                        <button type="button" class="btn btn-app">Consult Now</button>
+                    </div>
+
+
+
+
+
+
+                    <br>
+
+                    <h3>You'r upcomming Appointments are here</h3>
+
+                    <br>
+                    <input class="form-control" id="Input1" type="text" placeholder="Search..">
+                    <br>
+                    <div class="tab1" style=" max-height: 450px;overflow-y: auto;">
+
+
+                        <table class="table table-bordered table1">
+                            <thead>
+                                <tr>
+
+                                    <th>Patient Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable1" class="tbody">
+                                <tr>
+                                    <td>Patient 1</td>
+                                    <td>9090909090</td>
+                                    <td>27/11/2021</td>
+                                    <td>5:00-5:20 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient 2</td>
+                                    <td>9090909090</td>
+                                    <td>27/11/2021</td>
+                                    <td>5:20-5:40 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient 3</td>
+                                    <td>9090909090</td>
+                                    <td>27/11/2021</td>
+                                    <td>5:40-6:00 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient 4</td>
+                                    <td>9090909090</td>
+                                    <td>27/11/2021</td>
+                                    <td>6:00-6:20 pm</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <br>
+                    <br>
+
+                </div>
+
+
+                <!-- Messages-->
+                <div class="mcont" style=" max-height: 600px;overflow-y: auto;" id="mess">
+                    <h1>Messages</h1>
+                    <br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="tc3">Message ID</th>
+                                <th class="tc3">Message</th>
+                                <th class="tc3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable2" class="tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Your Message will be displayed here</td>
+                                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Your Message will be displayed here</td>
+                                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Your Message will be displayed here</td>
+                                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>Your Message will be displayed here</td>
+                                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--cancel appointments-->
+                <div class="cancel" id="cancel">
+                    <h1> Cancel your scheduled appointment</h1>
+
+                    <br><br>
+                    <input class="form-control" id="Input" type="text" placeholder="Search..">
+                    <br>
+                    <div class="tab1" style=" max-height: 450px;overflow-y: auto;">
+
+
+                        <table class="table table-bordered table1">
+                            <thead>
+                                <tr>
+                                    <th>Patient Id</th>
+                                    <th>Patient Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="myTable3" class="tbody">
+                                <tr>
+                                    <td>1</td>
+                                    <td>Doe</td>
+                                    <td>27/11/2021</td>
+                                    <td>7:00-7:20 pm</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Moe</td>
+                                    <td>27/11/2021</td>
+                                    <td>7:00-7:20 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Doe</td>
+                                    <td>27/11/2021</td>
+                                    <td>7:00-7:20 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Doe</td>
+                                    <td>27/11/2021</td>
+                                    <td>7:00-7:20 pm</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="docid">Doctor-Id</label>
+                            <input type="text" class="form-control" id="docid" placeholder="Enter DoctorId">
+
+
+                        </div>
+                        <div class="form-group">
+                            <label for="date1">Date</label>
+                            <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
+                        </div>
+
+
+
+
+                        <div class="but12">
+                            <button type="submit" class="btn btn-primary btn-app">Cancel Appointment</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!--Previous Appointments and send prescription-->
+                <div class="previous_tab" style=" max-height: 600px;overflow-y: auto;" id="pasp">
+                    <h1>Previous Appointments</h1>
+                    <table class="table table-bordered table1">
+                        <thead>
+                            <tr>
+                                <th>Patient Id</th>
+                                <th>Patient Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Add Prescription</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable" class="tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Doe</td>
+                                <td>27/11/2021</td>
+                                <td>7:00-7:20 pm</td>
+                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Moe</td>
+                                <td>27/11/2021</td>
+                                <td>7:00-7:20 pm</td>
+                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Doe</td>
+                                <td>27/11/2021</td>
+                                <td>7:00-7:20 pm</td>
+                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>Doe</td>
+                                <td>27/11/2021</td>
+                                <td>7:00-7:20 pm</td>
+                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--Schedule Manager-->
+                <div class="schedule" id="schmana">
+
+                    <h2>Your Daily Available Schedule/Slot</h2>
+                    <br>
+                    <br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Slot Number</th>
+                                <th>Slot</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>13:00-13:30</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>15:00-15:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>16:00-16:30</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+
+                    <br>
+                    <br>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="slot">
+                                <h3> Add Schedule</h3>
+                            </label>
+
+
+                            <select class="form-control" id="slot">
+                                <option value="" hidden selected disabled>Schedule</option>
+                                <option>08:00-08:30</option>
+                                <option>08:30-09:00</option>
+                                <option>09:00-09:30</option>
+                                <option>10:00-10:30</option>
+                                <option>10:30-11:00</option>
+                                <option>11:00-11:30</option>
+                                <option>11:30-12:00</option>
+                                <option>18:00-18:30</option>
+                                <option>18:30-19:00</option>
+                                <option>19:00-19:30</option>
+                                <option>20:00-20:30</option>
+                                <option>20:30-21:00</option>
+                                <option>21:00-21:30</option>
+                                <option>21:30-22:00</option>
+                            </select>
+                        </div>
+
+                        <div class="but12">
+                            <button type="submit" class="btn btn-primary btn-app">Add Slot</button>
+                        </div>
+
+                    </form>
+
+                    <br>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label for="shed-del">
+                                <h3>Delete Schedule</h3>
+                            </label>
+
+
+                            <select class="form-control" id="shed-del">
+                                <option value="" hidden selected disabled>Schedule</option>
+                                <option>08:00-08:30</option>
+                                <option>08:30-09:00</option>
+                                <option>09:00-09:30</option>
+                                <option>10:00-10:30</option>
+                                <option>10:30-11:00</option>
+                                <option>11:00-11:30</option>
+                                <option>11:30-12:00</option>
+                                <option>18:00-18:30</option>
+                                <option>18:30-19:00</option>
+                                <option>19:00-19:30</option>
+                                <option>20:00-20:30</option>
+                                <option>20:30-21:00</option>
+                                <option>21:00-21:30</option>
+                                <option>21:30-22:00</option>
+                            </select>
+                        </div>
+
+                        <div class="but12">
+                            <button type="submit" class="btn btn-primary btn-app">Delete Slot</button>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="doctorportal.js" charset="utf-8 "></script>
+</body>
+
+</html>

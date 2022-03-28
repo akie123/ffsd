@@ -1,4 +1,4 @@
-let flap = 0;
+let flap = 1;
 let emailValue;
 let passwordValue;
 let passwordValuere;
@@ -22,7 +22,6 @@ document.getElementById("but1").addEventListener("click", function() {
     document.getElementById("body-1").style.display = "none";
     document.getElementById("body-2").style.display = "block";
     flap = 1;
-    window.location.href='/signupd';
 })
 
 
@@ -150,11 +149,11 @@ document.getElementById("but-4").addEventListener("click", async function(e) {
 // })
 
 function showpassword() {
-  pass = document.getElementById('password')
-  if(pass.type=="password"){
-    pass.type = 'text'
-  }
-  else if (pass.type == 'text') {
-    pass.type = 'password'
-  }
+    pass = document.getElementById('password')
+    if(pass.type=="password"){
+        pass.type = 'text'
+    }
+    else if (pass.type == 'text') {
+        pass.type = 'password'
+    }
 }

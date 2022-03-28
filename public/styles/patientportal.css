@@ -91,7 +91,7 @@ padding-bottom: 3%;
 
   }
   .upcoming{
-    /*display: none;*/
+    display: none;
     padding-left: 3%;
     padding-top: 1%;
     width: 80%;
@@ -120,3 +120,25 @@ padding-bottom: 3%;
     font-family: 'Montserrat', sans-serif;
     display: none;
   }
+  .mcont{
+    padding-left: 3%;
+    padding-top: 3%;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 3%;
+
+  }
+  .map1{
+    display: none;
+  }
+  .btnp{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.shedule{
+  padding-left: 3%;
+  padding-top: 3%;
+  width: 80%;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 3%;
+}
