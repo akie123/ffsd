@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 app.set('view engine','ejs');
 const Patient=require('./models/patient');
 const Doctor=require('./models/doctor');
+const Shedule=require('./models/shedule');
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -36,9 +37,14 @@ app.get('/signin',(req,res)=>{
 })
 app.get('/doctorportal',(req,res)=>{
 
-    Doctor.findOne({_id:req.cookies.Did},(err,data)=>{
-        res.render('doctorPortal',{data:data})
+    Shedule.find({id: req.cookies.Did},(err,data1)=>{
+       console.log(data1)
+        Doctor.findOne({_id: req.cookies.Did}, (err, data) => {
+            res.render('doctorPortal', {data: data,data1: data1})
+        })
     })
+
+
 
 
 })
@@ -88,6 +94,14 @@ app.post('/doctorportal',(async (req ,res)=>{
           })
 
           res.json({status:"updated"});
+      }
+      if(req.body.flag=='slot')
+      {
+        await Shedule.insertMany([{
+          id: req.cookies.Did,
+          slot:req.body.slot
+        }])
+          res.json({status:"slot"});
       }
 
 
@@ -151,7 +165,7 @@ app.post('/signin',(async (req,res)=>{
    // Patient.find({},function (err,user){
    //     console.log(user)
    // })
-
+let to=0;
     Patient.findOne(data, function(err, user) {
         if (err) {
             res.json({
@@ -159,7 +173,6 @@ app.post('/signin',(async (req,res)=>{
                 message: err
             });
         }
-
         else if(user){
 
         res.cookie('id',user._id);
@@ -170,35 +183,41 @@ app.post('/signin',(async (req,res)=>{
             message: "success"
         });
 
-        };
-    })
-
-    Doctor.findOne(data,function (err1,user1){
-        if(err1){
-            res.json({
-                status: 0,
-                message: err1
-            });
         }
-        else if(!user1)
+        else
         {
-            console.log('na')
-            res.json({
-                status: 0,
-                message: "not found"
-            });
-        }
-        else {
-            res.cookie('Did',user1._id);
+            Doctor.findOne(data,function (err1,user1){
+                if(err1){
+                    res.json({
+                        status: 0,
+                        message: err1
+                    });
+                }
+                else if(!user1)
+                {
+                    console.log('na')
+                    res.json({
+                        status: 0,
+                        message: "not found"
+                    });
+                }
+                else {
+                    res.cookie('Did',user1._id);
 
-            res.json({
-                status: 1,
-                id: user1._id,
-                message: "successD"
-            });
+                    res.json({
+                        status: 1,
+                        id: user1._id,
+                        message: "successD"
+                    });
 
+                }
+            })
         }
+
+
     })
+
+
 
 
 

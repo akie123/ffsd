@@ -350,7 +350,7 @@
 
                 <!--cancel appointments-->
                 <div class="cancel" id="cancel">
-                    <h1> Cancel your scheduled appointment</h1>
+                    <h2> Cancel your scheduled appointment</h2>
 
                     <br><br>
                     <input class="form-control" id="Input" type="text" placeholder="Search..">
@@ -478,30 +478,23 @@
                     <h2>Your Daily Available Schedule/Slot</h2>
                     <br>
                     <br>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="tabq">
                         <thead>
                             <tr>
-                                <th>Slot Number</th>
+
                                 <th>Slot</th>
 
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>13:00-13:30</td>
 
-                            </tr>
-
+                        <% data1.forEach(function(shed1){  %>
                             <tr>
-                                <td>2</td>
-                                <td>15:00-15:30</td>
-                            </tr>
 
-                            <tr>
-                                <td>3</td>
-                                <td>16:00-16:30</td>
+                                <td><%= shed1.slot%></td>
                             </tr>
+                        <%})%>
+
 
 
                         </tbody>
@@ -511,14 +504,16 @@
                     <br>
                     <br>
 
-                    <form>
+                    <form class="" action="/doctorportal" method="post">
+
+
                         <div class="form-group">
                             <label for="slot">
                                 <h3> Add Schedule</h3>
                             </label>
 
 
-                            <select class="form-control" id="slot">
+                            <select class="form-control" id="slot" name="slot">
                                 <option value="" hidden selected disabled>Schedule</option>
                                 <option>08:00-08:30</option>
                                 <option>08:30-09:00</option>
@@ -538,14 +533,16 @@
                         </div>
 
                         <div class="but12">
-                            <button type="submit" class="btn btn-primary btn-app">Add Slot</button>
+                            <button type="submit" id="butslot" class="btn btn-primary btn-app">Add Slot</button>
                         </div>
 
                     </form>
 
                     <br>
                     <br>
-                    <form>
+                    <form class="" action="/doctorportal" method="post">
+
+
                         <div class="form-group">
                             <label for="shed-del">
                                 <h3>Delete Schedule</h3>
@@ -572,7 +569,7 @@
                         </div>
 
                         <div class="but12">
-                            <button type="submit" class="btn btn-primary btn-app">Delete Slot</button>
+                            <button type="button" id="butdel" class="btn btn-primary btn-app">Delete Slot</button>
                         </div>
 
                     </form>
