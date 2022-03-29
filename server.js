@@ -6,6 +6,14 @@ app.set('view engine','ejs');
 const Patient=require('./models/patient');
 const Doctor=require('./models/doctor');
 const Shedule=require('./models/shedule');
+let nodemailer = require('nodemailer');
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'aalhad.a20@iiits.in',
+        pass: 'Jaysairaj@1'
+    }
+});
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -25,6 +33,94 @@ mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
 app.use(express.static('public'))
 app.get('/',(req,res)=>{
     res.sendFile('views/home.html',{root:__dirname})
+})
+app.get('/forget',(req,res)=>{
+    res.sendFile('views/forget.html',{root:__dirname})
+})
+app.post('/forget',async (req,res)=>{
+console.log(req.body)
+  Patient.findOne({email:req.body.email}, function(err, user) {
+      if (err) {
+          res.json({
+              status: 0,
+              message: err
+          });
+      }
+      else if(user){
+
+         let mailOptions = {
+              from: 'bhargavkoduri1234@gmail.com',
+              to: req.body.email,
+              subject: 'Your Password',
+              text: "Your Password: "+ user.password
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                  console.log(error);
+              } else {
+                  console.log('Email sent: ' + info.response);
+              }
+          });
+      res.json({
+          status: 1,
+          id: user._id,
+          message: "success"
+      });
+
+      }
+      else
+      {
+          Doctor.findOne({email:req.body.email},function (err1,user1){
+              if(err1){
+                  res.json({
+                      status: 0,
+                      message: err1
+                  });
+              }
+              else if(!user1)
+              {
+                  console.log('na')
+                  res.json({
+                      status: 0,
+                      message: "not found"
+                  });
+              }
+              else {
+
+                  let mailOptions = {
+                      from: 'aalhad.a20@iiits.in',
+                      to: req.body.email,
+                      subject: 'Your Password',
+                      text: user.password
+                  };
+
+                  transporter.sendMail(mailOptions, function(error, info){
+                      if (error) {
+                          console.log(error);
+                      } else {
+                          console.log('Email sent: ' + info.response);
+                      }
+                  });
+                  res.json({
+                      status: 1,
+                      id: user1._id,
+                      message: "successD"
+                  });
+
+              }
+          })
+      }
+
+
+  })
+
+
+
+
+
+
+
 })
 app.get('/signup',(req,res)=>{
     res.sendFile('views/signup.html',{root:__dirname})

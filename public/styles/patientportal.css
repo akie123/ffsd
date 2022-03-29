@@ -90,8 +90,12 @@ padding-bottom: 3%;
     background-color:  #711A75;
 
   }
+  h5{
+    font-size: 1rem;
+  }
+  
   .upcoming{
-    display: none;
+    /* display: none; */
     padding-left: 3%;
     padding-top: 1%;
     width: 80%;
