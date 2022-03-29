@@ -353,6 +353,8 @@
           <h2>Edit/View Info</h2>
           <br>
           <br>
+<form action="/patientportal" method="post">
+
 
           <div class="row">
             <div class="col-md-6">
@@ -424,7 +426,7 @@
                   <div class="form-group">
                     <h5>Allergies</h5>
                     <%dat=JSON.stringify(new Date(pdata.allergies)).slice(1,11)%>
-                    <textarea id="allergies" class="form-control" style="height : 150px"><%=pdata.allergies%> <%=dat%></textarea>
+                    <textarea id="allergies" class="form-control" style="height : 150px"><%=pdata.allergies%></textarea>
                   </div>
 
                 </div>
@@ -473,6 +475,7 @@
             </div>
           </div>
         </div>
+        </form>
 
 <!--message-->
 

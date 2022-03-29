@@ -21,6 +21,29 @@ document.getElementById("strip").addEventListener("click", function() {
 
 
 })
+document.getElementById('changes').addEventListener("click",async (e)=>{
+    e.preventDefault();
+    const rawResponse = await fetch('/doctorportal', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({pass1:document.getElementById('pass-1').value,pass2:document.getElementById('pass-2').value,name:document.getElementById('name').value,phno:document.getElementById('phonenum').value,dob:document.getElementById('dobd').value,gender:document.getElementById('genderD').value,adhar:document.getElementById('adhar-card-d').value,qualification:document.getElementById('qualification').value,department:document.getElementById('department').value,experience:document.getElementById('exp').value,flag:'info'})
+
+    });
+    const content = await rawResponse.json();
+    if(content.status=='updated')
+    {
+        window.alert("Info Updated Successfully!")
+        window.location.href="/doctorportal"
+    }
+    else {
+        console.log("Update Failed please try again")
+        window.location.href="/doctorportal"
+
+    }
+})
 
 function upcoming(){
         document.getElementById('upcoming').style.display = 'inline-block';

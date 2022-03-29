@@ -35,7 +35,12 @@ app.get('/signin',(req,res)=>{
     res.sendFile('views/signin.html',{root:__dirname})
 })
 app.get('/doctorportal',(req,res)=>{
-    res.sendFile('views/doctorPortal.html',{root:__dirname})
+
+    Doctor.findOne({_id:req.cookies.Did},(err,data)=>{
+        res.render('doctorPortal',{data:data})
+    })
+
+
 })
 
 
@@ -54,6 +59,39 @@ app.get('/patientportal',(req,res)=>{
 
 
 })
+app.post('/doctorportal',(async (req ,res)=>{
+
+
+      if(req.body.flag=='info')
+      {
+          console.log(req.body)
+          let up={
+
+              password: req.body.pass1,
+              name: req.body.name,
+              phone: req.body.phno,
+              dob: req.body.dob,
+              gender: req.body.gender,
+              adhar: req.body.adhar,
+              qualification: req.body.qualification,
+              department:req.body.department,
+              experience:req.body.experience
+
+          }
+          Doctor.findByIdAndUpdate(req.cookies.Did,up,(err,data)=>{
+              if (err){
+                  console.log(err)
+              }
+              else{
+                  console.log("Updated User : ", data);
+              }
+          })
+
+          res.json({status:"updated"});
+      }
+
+
+}))
 
 app.post('/signup',(async (req, res) => {
 
@@ -102,6 +140,7 @@ app.post('/signin',(async (req,res)=>{
 
     console.log((req.body));
     res.clearCookie('id');
+    res.clearCookie('Did');
     // res.json({status:"working"})
 
    let data={
@@ -120,15 +159,8 @@ app.post('/signin',(async (req,res)=>{
                 message: err
             });
         }
-        else if (!user) {
-            console.log('na')
-            res.json({
-                status: 0,
-                message: "not found"
-            });
 
-        }
-        else{
+        else if(user){
 
         res.cookie('id',user._id);
 
@@ -140,6 +172,35 @@ app.post('/signin',(async (req,res)=>{
 
         };
     })
+
+    Doctor.findOne(data,function (err1,user1){
+        if(err1){
+            res.json({
+                status: 0,
+                message: err1
+            });
+        }
+        else if(!user1)
+        {
+            console.log('na')
+            res.json({
+                status: 0,
+                message: "not found"
+            });
+        }
+        else {
+            res.cookie('Did',user1._id);
+
+            res.json({
+                status: 1,
+                id: user1._id,
+                message: "successD"
+            });
+
+        }
+    })
+
+
 
 
 

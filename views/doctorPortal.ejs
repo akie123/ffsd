@@ -75,7 +75,11 @@
                 <!--Edit Info-->
                 <center>
                     <div class="info" id="info">
-                        <h1>Edit/View Info</h1>
+                        <h2>Edit/View Info</h2>
+                        <br>
+<form class="" action="/doctorportal" method="post">
+
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -84,7 +88,7 @@
                                             <h4>Name</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" id="name" class="form-control">
+                                            <input type="text" id="name" name="name" class="form-control" value="<%=data.name%>">
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +100,7 @@
                                             <h4>Phone Number</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" id="phonenumber1" class="form-control">
+                                            <input type="text" id="phonenum" name="phno" class="form-control" value="<%=data.phone%>">
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +111,7 @@
                                             <h4>Aadhaar Number</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" id="phonenumber" class="form-control">
+                                            <input type="text" id="adhar-card-d" name="adhar" class="form-control" value="<%=data.adhar%>">
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +123,7 @@
                                             <h4>D.O.B</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="date" id="dob" class="form-control">
+                                            <input type="date" name="dob" id="dobd" class="form-control" value="<%=data.dob%>">
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +137,7 @@
                                             <h4>Qualification*</h4>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="qualification" readonly>
+                                            <input type="text" name="qualification" class="form-control" id="qualification" value="<%=data.qualification%>" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +148,7 @@
                                             <h4>Department*</h4>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="department" readonly>
+                                            <input type="text" name="department" class="form-control" id="department" value="<%=data.department%>" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -156,17 +160,17 @@
                                             <h4>Experience</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <select name="experiece" id="exp" class="form-control">
-                                                <option value="" hidden selected disabled>Select Experience</option>
-                                                <option value="1y">1 year</option>
-                                                <option value="2y">2 Years</option>
-                                                <option value="3y">3 Years</option>
-                                                <option value="4y">4 Years </option>
-                                                <option value="5y">5 Yeats</option>
-                                                <option value="6y">6 Years</option>
-                                                <option value="7y">7 Years</option>
-                                                <option value="8y">8 Years</option>
-                                                <option value="9y">8+ Years</option>
+                                            <select name="experience" id="exp" class="form-control">
+                                                <option selected><%=data.experience%></option>
+                                                <option value="1y">1 Y</option>
+                                                <option value="2y">2 Y</option>
+                                                <option value="3y">3 Y</option>
+                                                <option value="4y">4 Y </option>
+                                                <option value="5y">5 Y</option>
+                                                <option value="6y">6 Y</option>
+                                                <option value="7y">7 Y</option>
+                                                <option value="8y">8 Y</option>
+                                                <option value="8y+">8+ Y</option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,8 +182,8 @@
                                             <h4>Gender</h4>
                                         </div>
                                         <div class="col-sm-9">
-                                            <select class="form-control" name="gender" id="gender">
-                                                <option value="none" hidden selected disabled></option>
+                                            <select class="form-control" name="gender" id="genderD">
+                                                <option selected><%=data.gender%></option>
                                                 <option value="Male">Male</option>
                                                 <option value="Fe-Male">Female</option>
                                             </select>
@@ -198,7 +202,7 @@
                                         <h4>Password</h4>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="password" id="password1" class="form-control">
+                                        <input type="password" id="pass-1" name="pass-1" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +212,7 @@
                                         <h4>Confirm Password</h4>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="password" id="password" class="form-control">
+                                        <input type="password" id="pass-2" name="pass-2" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -218,18 +222,19 @@
                             <div class="col-sm-3">
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-lg btn-block">Save Changes</button>
+                                <button class="btn btn-lg btn-block" id="changes">Save Changes</button>
                             </div>
                         </div>
+                        </form>
                     </div>
 
                 </center>
 
                 <!-- Upcoming Appointments-->
                 <div class="upcoming container-fluid" id="upcoming">
-                    <h1> Hey Dr.ABC, Welcome Back!</h1>
+                    <h2> Hey Dr.<%=data.name%>, Welcome Back!</h2>
                     <br>
-                    <h5>Next Appointment</h5>
+                    <h5>Next Patient</h5>
 
                     <h5><i class="fa-solid fa-user"></i>Patient</h5>
                     <hr>
@@ -248,7 +253,7 @@
 
                     <br>
 
-                    <h3>You'r upcomming Appointments are here</h3>
+                    <h3>Your upcoming Appointments are here</h3>
 
                     <br>
                     <input class="form-control" id="Input1" type="text" placeholder="Search..">

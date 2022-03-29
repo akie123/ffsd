@@ -57,7 +57,9 @@ document.getElementById("a").addEventListener("click", function() {
 
 
 })
-document.getElementById("b").addEventListener("click", function() {
+
+document.getElementById("b").addEventListener("click", async function(e) {
+
 
     document.getElementById('cancel').style.display='none';
     document.getElementById('booking').style.display='none';
@@ -66,6 +68,10 @@ document.getElementById("b").addEventListener("click", function() {
     document.getElementById('map1').style.display='none';
     document.getElementById('upcoming').style.display='none';
       document.getElementById('info').style.display='block';
+
+
+
+
 
 })
 document.getElementById("d").addEventListener("click", function() {

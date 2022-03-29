@@ -98,7 +98,8 @@ document.getElementById("but-3").addEventListener("click", async function(e) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email:document.getElementById('email-1').value,pass1:document.getElementById('pass-1').value,pass2:document.getElementById('pass-2').value,name:document.getElementById('name').value,phno:document.getElementById('phone').value,dob:document.getElementById('dob').value,adno:document.getElementById('adhar-card').value,gender:document.getElementById('genderP').value,allergies:document.getElementById('allergies').value,history:document.getElementById('history').value})
+
+        body: JSON.stringify({email:document.getElementById('email-1').value,pass1:document.getElementById('pass-1').value,pass2:document.getElementById('pass-2').value,name:document.getElementById('name').value,phno:document.getElementById('phone').value,dob:document.getElementById('dob').value,adno:document.getElementById('adhar-card').value,gender:document.getElementById('genderP').value,allergies:document.getElementById('allergies').value,history:document.getElementById('history').value,flag:1})
 
     });
     const content = await rawResponse.json();

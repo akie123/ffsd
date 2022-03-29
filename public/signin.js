@@ -19,6 +19,8 @@ document.getElementById('but').addEventListener("click", async function(e) {
 
     if(content.message==="success")
         window.location.href="/patientportal";
+    else if(content.message==="successD")
+        window.location.href="/doctorportal";
     else
     {
         window.alert('Credential Incorrect,Try again!')
