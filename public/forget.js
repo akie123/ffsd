@@ -20,9 +20,14 @@ document.getElementById('sbtn').addEventListener('click', async function(e){
       })
       const content = await rawResponse.json();
 
-
-          window.alert("email sent successfully")
-          window.location.href="/signin";
+          if(content.message=="success"||content.message=="successD") {
+              window.alert("email sent successfully")
+              window.location.href = "/signin";
+          }
+          else{
+              window.alert("error")
+              window.location.href = "/signin";
+          }
 
     }
 

@@ -30,7 +30,29 @@ $(document).ready(function(){
         });
     });
 });
+document.getElementById("savechanges").addEventListener("click",async function(e){
+  e.preventDefault();
+  const rawResponse = await fetch('/patientportal', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({pass1:document.getElementById('pass1').value,pass2:document.getElementById('pass2').value,name:document.getElementById('name').value,phno:document.getElementById('phonenum').value,dob:document.getElementById('dob').value,gender:document.getElementById('gender').value,adhar:document.getElementById('adhar').value,flag:'info'})
 
+  });
+  const content = await rawResponse.json();
+  if(content.status=='updated')
+  {
+      window.alert("Info Updated Successfully!")
+      window.location.href="/patientportal"
+  }
+  else {
+      console.log("Update Failed please try again")
+      window.location.href="/patientportal"
+
+  }
+})
 document.getElementById("strip").addEventListener("click", function() {
 
 
@@ -64,7 +86,7 @@ document.getElementById("b").addEventListener("click", async function(e) {
     document.getElementById('cancel').style.display='none';
     document.getElementById('booking').style.display='none';
     document.getElementById('past-appointment').style.display='none';
-  
+
     document.getElementById('map1').style.display='none';
     document.getElementById('upcoming').style.display='none';
       document.getElementById('info').style.display='block';

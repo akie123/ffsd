@@ -41,7 +41,7 @@
             </a>
             <a href="#" class="list-group-item list-group-item-action" id="b"><i class="fa-solid fa-info fa-fw"></i>Info </a>
             <a href="#" class="list-group-item list-group-item-action" id="d"><i class="fa-solid fa-calendar-check fa-fw"></i> Book Appointment</a>
-            <a href="#" class="list-group-item list-group-item-action" id="e"><i class="fa-solid fa-calendar-check fa-fw"></i> Cancle Appointment</a>
+            <a href="#" class="list-group-item list-group-item-action" id="e"><i class="fa-solid fa-calendar-check fa-fw"></i> Cancel Appointment</a>
             <a href="#" class="list-group-item list-group-item-action" id="f"><i class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment & Prescriptions</a>
             <a href="#" class="list-group-item list-group-item-action" id="g"><i class="fas fa-envelope fa-fw"></i> Messages & Permissions</a>
             <a href="/" class="list-group-item list-group-item-action" id="h"><i class="fas fa-sign-out-alt fa-fw"></i>Log-Out</a>
@@ -102,10 +102,7 @@
 
 
             </div>
-            <div class="form-group">
-<!--              <label for="date2">Date</label>-->
-<!--              <input type="date" class="form-control" id="date2" placeholder="Date of Booking">-->
-            </div>
+
             <div class="form-group">
               <label for="slot2">Select Slot</label>
               <select class="form-control" id="slot2">
@@ -165,7 +162,7 @@
 
           <br>
 
-          <h3>You'r upcoming Appointments are here</h3>
+          <h3>Your upcoming Appointments are here</h3>
 
           <br>
           <input class="form-control" id="Input1" type="text" placeholder="Search..">
@@ -360,6 +357,9 @@
           </div>
 
 <!--info-->
+    <form class="" action="/patientportal" method="post">
+
+
         <div class="info" id="info">
           <h2>Edit/View Info</h2>
           <br>
@@ -375,7 +375,7 @@
                     <h5>Name</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="name" class="form-control" value="<%=pdata.name%>">
+                    <input type="text" id="name" name="name" class="form-control" value="<%=pdata.name%>">
                   </div>
                 </div>
               </div>
@@ -387,7 +387,7 @@
                     <h5>Phone Number</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="phonenum" class="form-control" value="<%=pdata.phone%>">
+                    <input type="text" id="phonenum" name="phono" class="form-control" value="<%=pdata.phone%>">
                   </div>
                 </div>
               </div>
@@ -398,7 +398,7 @@
                     <h5>Aadhaar Number</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" id="adhar" class="form-control" value="<%=pdata.adhar%>">
+                    <input type="text" id="adhar" name="adhar" class="form-control" value="<%=pdata.adhar%>">
                   </div>
                 </div>
               </div>
@@ -410,7 +410,7 @@
                     <h5>D.O.B</h5>
                   </div>
                   <div class="col-sm-9">
-                    <input type="date" id="dob" class="form-control" value="<%=(pdata.dob)%>">
+                    <input type="date" id="dob" name="dob" class="form-control" value="<%=(pdata.dob)%>">
                   </div>
                 </div>
               </div>
@@ -436,8 +436,8 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <h5>Allergies</h5>
-                    <%dat=JSON.stringify(new Date(pdata.allergies)).slice(1,11)%>
-                    <textarea id="allergies" class="form-control" style="height : 150px"><%=pdata.allergies%></textarea>
+
+                    <textarea id="allergies"  class="form-control" name="allergies" style="height : 150px"><%=pdata.allergies%></textarea>
                   </div>
 
                 </div>
@@ -446,7 +446,7 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <h5>Past Medical History</h5>
-                    <textarea id="m_history" class="form-control" style="height : 150px"><%=pdata.medicalhistory%></textarea>
+                    <textarea id="m_history" name="history" class="form-control" style="height : 150px"><%=pdata.medicalhistory%></textarea>
                   </div>
                 </div>
               </div>
@@ -460,7 +460,7 @@
                   <h5>Password</h5>
                 </div>
                 <div class="col-sm-8">
-                  <input type="password" id="password1" class="form-control" >
+                  <input type="password" name="pass1" id="pass1" class="form-control" >
                 </div>
               </div>
             </div>
@@ -470,7 +470,7 @@
                   <h5>Confirm Password</h5>
                 </div>
                 <div class="col-sm-8">
-                  <input type="password" id="password" class="form-control" >
+                  <input type="password" name="pass2" id="pass2" class="form-control" >
                 </div>
               </div>
             </div>
@@ -482,11 +482,14 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
-              <button class="btn btn-lg btn-block">Save Changes</button>
+              <button class="btn btn-lg btn-block"
+              style="background-color: #655D8A"id="savechanges">Save Changes</button>
             </div>
           </div>
         </div>
 
+
+</form>
 
 <!--message-->
 

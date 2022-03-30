@@ -45,10 +45,7 @@ document.getElementById("but2").addEventListener("click", function() {
             smallChar++;
         } else if (passwordValue[i] >= 'A' && passwordValue[i] <= 'Z') {
             bigChar++;
-        } else {
-            notRequired++;
         }
-
     }
     let error = false;
     if (emailValue == '') {
@@ -65,11 +62,10 @@ document.getElementById("but2").addEventListener("click", function() {
     } else if (passwordValue != passwordValuere) {
         alert("password din't match");
         error = true;
-    } else if (dig == 0 || smallChar == 0 || bigChar == 0 || notRequired > 0) {
+    } else if (dig == 0 || smallChar == 0 || bigChar == 0 ) {
         alert("password constrain din't satisfy! try other one");
         error = true;
     }
-
     if (error) {
         document.getElementById('email-1').value = '';
         document.getElementById('pass-1').value = '';
@@ -209,22 +205,7 @@ document.getElementById("but-4").addEventListener("click", async function(e) {
 
 })
 
-//
-// document.getElementById("strip").addEventListener("click", function() {
-//
-//
-//     let check = document.getElementById("elements").style.display;
-//     if (check == "none") {
-//         document.getElementById("elements").style.display = "block";
-//
-//
-//     } else {
-//         document.getElementById("elements").style.display = "none";
-//
-//     }
-//
-//
-// })
+
 
 function show_password() {
     pass = document.getElementById('pass-1')

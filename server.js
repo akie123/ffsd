@@ -37,6 +37,9 @@ app.get('/',(req,res)=>{
 app.get('/forget',(req,res)=>{
     res.sendFile('views/forget.html',{root:__dirname})
 })
+app.get('/admin',(req,res)=>{
+    res.sendFile('views/admin.html',{root:__dirname})
+})
 app.post('/forget',async (req,res)=>{
 console.log(req.body)
   Patient.findOne({email:req.body.email}, function(err, user) {
@@ -49,7 +52,7 @@ console.log(req.body)
       else if(user){
 
          let mailOptions = {
-              from: 'bhargavkoduri1234@gmail.com',
+              from: 'aalhad.a20@iiits.in',
               to: req.body.email,
               subject: 'Your Password',
               text: "Your Password: "+ user.password
@@ -58,15 +61,21 @@ console.log(req.body)
           transporter.sendMail(mailOptions, function(error, info){
               if (error) {
                   console.log(error);
+                  res.json({
+                      status: 0,
+                      id: user._id,
+                      message: "failed"
+                  });
               } else {
                   console.log('Email sent: ' + info.response);
+                  res.json({
+                      status: 1,
+                      id: user._id,
+                      message: "success"
+                  });
               }
           });
-      res.json({
-          status: 1,
-          id: user._id,
-          message: "success"
-      });
+
 
       }
       else
@@ -202,6 +211,38 @@ app.post('/doctorportal',(async (req ,res)=>{
 
 
 }))
+app.post('/patientportal',(async (req ,res)=>{
+
+console.log(req.body)
+      if(req.body.flag=='info')
+      {
+          console.log(req.body)
+          let up={
+
+
+            password: req.body.pass1,
+            name: req.body.name,
+            phone: req.body.phno,
+            dob: req.body.dob,
+            adhar: req.body.adno,
+            gender: req.body.gender,
+
+
+          }
+          Patient.findByIdAndUpdate(req.cookies.id,up,(err,data)=>{
+              if (err){
+                  console.log(err)
+              }
+              else{
+                  console.log("Updated User : ", data);
+              }
+          })
+
+          res.json({status:"updated"});
+      }
+
+
+}))
 
 app.post('/signup',(async (req, res) => {
 
@@ -312,11 +353,5 @@ let to=0;
 
 
     })
-
-
-
-
-
-
 
 }))
