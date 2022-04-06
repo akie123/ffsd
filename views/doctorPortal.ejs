@@ -476,6 +476,8 @@
                 <div class="schedule" id="schmana">
 
                     <h2>Your Daily Available Schedule/Slot</h2>
+                    <br><br>
+                    <h4 style="font-weight: bold"><%= moment().format('Do MMMM, YYYY'); %></h4>
                     <br>
                     <br>
                     <table class="table table-bordered" id="tabq">
@@ -514,23 +516,20 @@
 
 
                             <select class="form-control" id="slot" name="slot">
-                                <option value="" hidden selected disabled>Schedule</option>
+                                <option value="" hidden selected disabled>Add Schedule</option>
 
-                                <option>08:00-08:30</option>
-                                <option>08:30-09:00</option>
-                                <option>09:00-09:30</option>
-                                <option>10:00-10:30</option>
-                                <option>10:30-11:00</option>
-                                <option>11:00-11:30</option>
-                                <option>11:30-12:00</option>
-                                <option>18:00-18:30</option>
-                                <option>18:30-19:00</option>
-                                <option>19:00-19:30</option>
-                                <option>20:00-20:30</option>
-                                <option>20:30-21:00</option>
-                                <option>21:00-21:30</option>
-                                <option>21:30-22:00</option>
-
+                                <% let temp_arr = ["08:00-08:30","08:30-09:00","09:00-09:30","9:30-10:00","10:00-10:30","10:30-11:00","11:00-11:30","11:30-12:00","18:00-18:30","18:30-19:00","19:00-19:30","19:30-20:00","20:00-20:30","21:00-21:30","21:30-22:00"]%>
+                                <% let arr = []%>
+                                <% for(let i=0;i<temp_arr.length;i++){%>
+                                    <% let ele = temp_arr[i]%>
+                                    <% data1.forEach( function(ele1){%>
+                                        <% if(ele1.slot == ele){%>
+                                            <% arr.push(i)%>
+                                <% }})} %>
+                                <% for(let i=0;i<temp_arr.length;i++) {%>
+                                    <%  if(arr.indexOf(i) == -1){%>
+                                        <option><%= temp_arr[i] %></option>
+                                <% }} %>
 
 
 
@@ -555,21 +554,14 @@
 
 
                             <select class="form-control" id="shed-del">
-                                <option value="" hidden selected disabled>Schedule</option>
-                                <option>08:00-08:30</option>
-                                <option>08:30-09:00</option>
-                                <option>09:00-09:30</option>
-                                <option>10:00-10:30</option>
-                                <option>10:30-11:00</option>
-                                <option>11:00-11:30</option>
-                                <option>11:30-12:00</option>
-                                <option>18:00-18:30</option>
-                                <option>18:30-19:00</option>
-                                <option>19:00-19:30</option>
-                                <option>20:00-20:30</option>
-                                <option>20:30-21:00</option>
-                                <option>21:00-21:30</option>
-                                <option>21:30-22:00</option>
+                                <option value="" hidden selected disabled>Delete Schedule</option>
+                                <% data1.forEach(function(shed1){  %>
+
+
+                                        <option><%= shed1.slot%></option>
+
+                                <%})%>
+
                             </select>
                         </div>
 

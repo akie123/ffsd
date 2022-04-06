@@ -2,6 +2,7 @@ const express=require('express');
 const mongoose = require("mongoose");
 const app=express();
 const cookieParser = require('cookie-parser');
+const moment = require('moment');
 app.set('view engine','ejs');
 const Patient=require('./models/patient');
 const Doctor=require('./models/doctor');
@@ -142,12 +143,13 @@ app.get('/signin',(req,res)=>{
 })
 app.get('/doctorportal',(req,res)=>{
 
+
     Shedule.find({id: req.cookies.Did},(err,data1)=>{
        console.log(data1)
         Doctor.findOne({_id: req.cookies.Did}, (err, data) => {
-            res.render('doctorPortal', {data: data,data1: data1})
+            res.render('doctorPortal', {data: data,data1: data1,moment: moment })
         })
-    })
+    }).sort({slot :'asc'})
 
 
 
