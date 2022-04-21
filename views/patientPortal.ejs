@@ -95,7 +95,7 @@
 
           </div>
 
-          <form>
+          <form action="/patientportal" method="post" >
             <div class="form-group">
               <label for="docid2">Doctor-Id</label>
               <input type="text" class="form-control" id="docid2" placeholder="Enter DoctorId">
@@ -103,8 +103,11 @@
 
             </div>
 
+
             <div class="form-group">
-              <label for="slot2">Select Slot</label>
+
+
+              <label for="slot2"  >Select Slot</label>
               <select class="form-control" id="slot2">
                 <option disabled selected hidden>Select Available slots</option>
                 <option>08:00-08:30</option>
@@ -129,7 +132,7 @@
 
 
             <div class="but12">
-              <button type="submit" class="btn btn-primary btn-app">Confirm Slot</button>
+              <button type="button" id="cnf" class="btn btn-primary btn-app">Check & Confirm Slot</button>
             </div>
 
           </form>

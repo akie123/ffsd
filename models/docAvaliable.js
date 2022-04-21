@@ -17,6 +17,10 @@ const AvailableSchema = new Schema(
         available:{
             type: Boolean,
             required: true,
+        },
+        date:{
+            type:Date,
+            required:true
         }
 
     },

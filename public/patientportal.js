@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function(){
   $("#Input").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -30,7 +33,7 @@ $(document).ready(function(){
         });
     });
 });
-document.getElementById("savechanges").addEventListener("click",async function(e){
+document.getElementById("cnf").addEventListener("click",async function(e){
   e.preventDefault();
   const rawResponse = await fetch('/patientportal', {
       method: 'POST',
@@ -38,7 +41,7 @@ document.getElementById("savechanges").addEventListener("click",async function(e
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({pass1:document.getElementById('pass1').value,pass2:document.getElementById('pass2').value,name:document.getElementById('name').value,phno:document.getElementById('phonenum').value,dob:document.getElementById('dob').value,gender:document.getElementById('gender').value,adhar:document.getElementById('adhar').value,flag:'info'})
+      body: JSON.stringify({docid:document.getElementById('docid2').value,slot:document.getElementById('slot2').value,flag:"ok"})
 
   });
   const content = await rawResponse.json();
@@ -52,6 +55,29 @@ document.getElementById("savechanges").addEventListener("click",async function(e
       window.location.href="/patientportal"
 
   }
+})
+document.getElementById("savechanges").addEventListener("click",async function(e){
+    e.preventDefault();
+    const rawResponse = await fetch('/patientportal', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({pass1:document.getElementById('pass1').value,pass2:document.getElementById('pass2').value,name:document.getElementById('name').value,phno:document.getElementById('phonenum').value,dob:document.getElementById('dob').value,gender:document.getElementById('gender').value,adhar:document.getElementById('adhar').value,flag:'info'})
+
+    });
+    const content = await rawResponse.json();
+    if(content.status=='updated')
+    {
+        window.alert("Info Updated Successfully!")
+        window.location.href="/patientportal"
+    }
+    else {
+        console.log("Update Failed please try again")
+        window.location.href="/patientportal"
+
+    }
 })
 document.getElementById("strip").addEventListener("click", function() {
 

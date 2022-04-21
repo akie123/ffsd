@@ -7,6 +7,7 @@ app.set('view engine','ejs');
 const Patient=require('./models/patient');
 const Doctor=require('./models/doctor');
 const Shedule=require('./models/shedule');
+const available= require('./models/docAvaliable');
 let nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -208,8 +209,25 @@ app.post('/doctorportal',(async (req ,res)=>{
           id: req.cookies.Did,
           slot:req.body.slot
         }])
+          await available.insertMany([{
+              idd:req.cookies.Did,
+              idp: "",
+              slot:req.body.slot,
+              available:'false',
+              date: new Date()
+
+          }])
           res.json({status:"slot"});
       }
+    if(req.body.flag=='del')
+    {
+        console.log(req.body)
+        await Shedule.deleteOne([{
+            id: req.cookies.Did,
+            slot:req.body.slot
+        }])
+        res.json({status:"del"});
+    }
 
 
 }))
@@ -242,6 +260,13 @@ console.log(req.body)
 
           res.json({status:"updated"});
       }
+      else if(req.body.flag=='ok')
+    {
+        console.log(req.body)
+
+        res.json({status:"updated"});
+    }
+
 
 
 }))

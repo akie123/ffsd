@@ -76,13 +76,13 @@ document.getElementById('butdel').addEventListener("click",async (e)=>{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({slot:document.getElementById('shed-del').value,flag:'slotd'})
+        body: JSON.stringify({slot:document.getElementById('shed-del').value,flag:'del'})
 
     });
     const content = await rawResponse.json();
-    if(content.status=='slotd')
+    if(content.status=='del')
     {
-        window.alert("slot deleted Successfully!")
+        window.alert("slot delete Successfully!")
         window.location.href="/doctorportal"
     }
     else {
@@ -91,6 +91,29 @@ document.getElementById('butdel').addEventListener("click",async (e)=>{
 
     }
 })
+// document.getElementById('butdel').addEventListener("click",async (e)=>{
+//     e.preventDefault();
+//     const rawResponse = await fetch('/doctorportal', {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({slot:document.getElementById('shed-del').value,flag:'slotd'})
+//
+//     });
+//     const content = await rawResponse.json();
+//     if(content.status=='slotd')
+//     {
+//         window.alert("slot deleted Successfully!")
+//         window.location.href="/doctorportal"
+//     }
+//     else {
+//         console.log("Failed please try again")
+//         window.location.href="/doctorportal"
+//
+//     }
+// })
 
 function upcoming(){
         document.getElementById('upcoming').style.display = 'inline-block';
