@@ -222,7 +222,7 @@ app.post('/doctorportal',(async (req ,res)=>{
     if(req.body.flag=='del')
     {
         console.log(req.body)
-        await Shedule.deleteOne([{
+        await Shedule.findOneAndDelete([{
             id: req.cookies.Did,
             slot:req.body.slot
         }])
