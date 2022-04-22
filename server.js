@@ -8,6 +8,7 @@ const Patient=require('./models/patient');
 const Doctor=require('./models/doctor');
 const Shedule=require('./models/shedule');
 const available= require('./models/docAvaliable');
+const pastApt=require('./models/pastApt');
 let nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -160,15 +161,17 @@ app.get('/doctorportal',(req,res)=>{
 
 app.get('/patientportal',(req,res)=>{
 
-
+pastApt.find({idp:req.cookies.id},(err2,data3)=>{
     Doctor.find({},(err,data)=>{
 
-      Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
-          res.render('patientPortal',{data:data,pdata:data1})
-      })
+        Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
+            res.render('patientPortal',{data:data,pdata:data1,past:data3})
+        })
 
 
     })
+})
+
 
 
 
@@ -233,7 +236,7 @@ app.post('/doctorportal',(async (req ,res)=>{
 }))
 app.post('/patientportal',(async (req ,res)=>{
 
-console.log(req.body)
+
       if(req.body.flag=='info')
       {
           console.log(req.body)
@@ -262,9 +265,64 @@ console.log(req.body)
       }
       else if(req.body.flag=='ok')
     {
-        console.log(req.body)
 
-        res.json({status:"updated"});
+        console.log(req.body)
+         available.findOneAndUpdate({idd:req.body.docid,slot:req.body.slot,available:'false'},{idp:req.cookies.id,date:new Date(),available:'true'},null,async(err,doc)=>{
+
+             if(doc)
+             {
+
+                await pastApt.insertMany([{
+                    idd:req.body.docid,
+                    idp:req.cookies.id,
+                    date:new Date(),
+                    slot:req.body.slot,
+                    status:'true'
+
+                }])
+                 res.json({status:"ok"});
+
+             }
+             else {
+                 available.findOne({idd:req.body.docid,slot:req.body.slot,available:'true'},async(err,res1)=>{
+                     if(res1){
+
+                         if(res1.date.getDate()!=new Date().getDate()) {
+                             available.updateOne({idd:req.body.docid,slot:req.body.slot},{idp:req.cookies.id,date:new Date(),available:'true'},null,async(er1,da1)=>{
+
+                                 if(da1)
+                                 {
+                                     await pastApt.insertMany([{
+                                         idd:req.body.docid,
+                                         idp:req.cookies.id,
+                                         date:new Date(),
+                                         slot:req.body.slot,
+                                         status:'true'
+
+                                     }])
+                                     res.json({status:"ok"});
+                                 }
+
+                             })
+                         }
+                         else
+                         {
+                             res.json({status:"no"});
+                         }
+
+                     }
+                     else
+                     {
+                         res.json({status:"no"});
+                     }
+                 })
+             }
+         })
+
+
+
+
+
     }
 
 

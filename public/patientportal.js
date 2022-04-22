@@ -45,13 +45,14 @@ document.getElementById("cnf").addEventListener("click",async function(e){
 
   });
   const content = await rawResponse.json();
-  if(content.status=='updated')
+  console.log(content.status);
+  if(content.status=='ok')
   {
-      window.alert("Info Updated Successfully!")
+      window.alert("Booked Successfully!")
       window.location.href="/patientportal"
   }
   else {
-      console.log("Update Failed please try again")
+      window.alert("Slots taken Choose others!")
       window.location.href="/patientportal"
 
   }
