@@ -3,12 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/styles/admin.css">
+  <link rel="stylesheet" href="styles/admin.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
@@ -76,7 +75,7 @@
     }
 
     .table2 {
-      margin-top:50px;
+      margin-top: 50px;
     }
 
     .acc {
@@ -182,386 +181,127 @@
   </div>
 
   <table class="table1">
-    <tbody>
+
     <thead>
     <tr class="bg-light">
-      <th scope="col" width="10%">Sr.No</th>
+      <th scope="col" width="10%">query id</th>
       <th scope="col" width="10%">name</th>
       <th scope="col" width="10%">email</th>
       <th scope="col" width="20%">query</th>
-      <th scope="col" width="10%">status</th>
     </tr>
     </thead>
+    <tbody>
+    <%queriesList.forEach(query=> {%>
     <tr>
+      <th scope="row">
+        <%= query._id%>
+      </th>
       <td>
-        <center>1</center>
+        <%= query.name %>
       </td>
       <td>
-        <center>patient1</center>
+        <%= query.email %>
       </td>
       <td>
-        <center>patient1@gmail.com</center>
+        <%= query.query %>
       </td>
-      <td>
-        <center>Dr.abcd is not responding </center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
+      <%})%>
 
-    </tr>
-    <tr>
-      <td>
-        <center>2</center>
-      </td>
-      <td>
-        <center>patient2</center>
-      </td>
-      <td>
-        <center>patient2@gmail.com</center>
-      </td>
-      <td>
-        <center>Dr.abcd is not responding</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-
-
-
-    </tr>
-    <tr>
-      <td>
-        <center>3</center>
-      </td>
-      <td>
-        <center>patient3</center>
-      </td>
-      <td>
-        <center>patient1@gmail.com</center>
-      </td>
-      <td>
-        <center>Dr.abcd is not responding</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-
-
-    </tr>
-    <tr>
-      <td>
-        <center>4</center>
-      </td>
-      <td>
-        <center>patient4</center>
-      </td>
-      <td>
-        <center>patient1@gmail.com</center>
-      </td>
-      <td>
-        <center>Dr.abcd is not responding</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-
-
-    </tr>
-    <tr>
-      <td>
-        <center>5</center>
-      </td>
-      <td>
-        <center>patient5</center>
-      </td>
-      <td>
-        <center>patient1@gmail.com</center>
-      </td>
-      <td>
-        <center>Dr.abcd is not responding</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-    </tr>
     </tbody>
   </table>
+  <form action=" " method="post">
+    <input id="queryid" placeholder="Enter the ids of resolved queries" name="queryname" /><br>
+    <button type="submit" id="queryID" class="button button3">DONE</button>
+  </form>
 </div>
 
 <div class="accept" id="tb2">
   <div class="acc">
     <strong style="font-size: 60px;">Verify Doctor</strong>
   </div>
-  <table class="table2">
-    <tbody>
+  <table class="table">
     <thead>
-    <tr class="bg-light">
-      <th scope="col" width="10%">s.no</th>
+    <tr>
+      <th scope="col" width="10%">doctor id</th>
       <th scope="col" width="10%">name</th>
       <th scope="col" width="10%">email</th>
       <th scope="col" width="10%">qualification</th>
       <th scope="col" width="10%">Department</th>
-      <th scope="col" width="20%">Certificates</th>
-      <th scope="col" width="10%">Accept</th>
-
     </tr>
     </thead>
-    <tr>
-      <td>
-        <center>1</center>
-      </td>
-      <td>
-        <center>bargav</center>
-      </td>
-      <td>
-        <center>bargav@mail.com</center>
-      </td>
-      <td>
-        <center>mbbs</center>
-      </td>
-      <td>
-        <center>neurology</center>
-      </td>
-      <td>
-        <center>studyCertificate.pdf</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>2</center>
-      </td>
-      <td>
-        <center>charan</center>
-      </td>
-      <td>
-        <center>charan@gmail.com</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-      <td>
-        <center>Cardiology</center>
-      </td>
-      <td>
-        <center>studyCertificate.pdf</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>3</center>
-      </td>
-      <td>
-        <center>abcd</center>
-      </td>
-      <td>
-        <center>abcd@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-      <td>
-        <center>Anesthesiology</center>
-      </td>
-      <td>
-        <center>Certificate.pdf</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>4</center>
-      </td>
-      <td>
-        <center>pqrs</center>
-      </td>
-      <td>
-        <center>pqrs@gmailc.om</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-      <td>
-        <center>Anesthesiology</center>
-      </td>
-      <td>
-        <center>cert.pdf</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>5</center>
-      </td>
-      <td>
-        <center>xyz</center>
-      </td>
-      <td>
-        <center>xyz@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-      <td>
-        <center>Cardiology</center>
-      </td>
-      <td>
-        <center>studyCertificate.pdf</center>
-      </td>
-      <td>
-        <center><input type="checkbox" class="largerCheckbox"
-                       style="border:2px dotted #00f;display:block;background:#ff0000;" /></center>
-      </td>
-
-    </tr>
+    <tbody>
+    <%dupdoctorsList.forEach(doctor=> {%>
+      <tr>
+        <th scope="row" id="dupdocid">
+          <%= doctor._id%>
+        </th>
+        <td>
+          <%= doctor.name %>
+        </td>
+        <td>
+          <%= doctor.email %>
+        </td>
+        <td>
+          <%= doctor.qualification %>
+        </td>
+        <td>
+          <%= doctor.department %>
+        </td>
+      </tr>
+    <%})%>
     </tbody>
   </table>
+  <form action=" " method="post">
+    <input id="docdid" placeholder="Enter Doctor Id" name="docdname" /><br>
+    <button type="submit" id="docdID" class="button button3">Accept doctor</button>
+  </form>
 </div>
 
 <div class="removeDoctor" id="tb3">
   <div class="rem">
     <strong style="font-size: 60px;">Remove Doctor</strong>
   </div>
-  <input type="text" id="myInput11"  placeholder="Search for doctor names.."
-         title="Type in a name">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search doctor name.." title="Type in a name">
   <br>
-  <table class="table3" id="t3">
+  <table class="table" id="table3">
     <thead>
-    <tr class="bg-light">
-      <th scope="col" width="10%">Dr Id</th>
+    <tr>
+      <th scope="col" width="10%">doctor id</th>
       <th scope="col" width="10%">name</th>
       <th scope="col" width="10%">email</th>
       <th scope="col" width="10%">qualification</th>
       <th scope="col" width="10%">Department</th>
-      <th scope="col" width="20%">Certificates</th>
-
     </tr>
     </thead>
     <tbody>
+    <%doctorsList.forEach(doctor=> {%>
     <tr>
+      <th scope="row">
+        <%= doctor._id%>
+      </th>
       <td>
-        <center>1</center>
-      </td>
-      <td class="doc">
-        <center>bargav</center>
-      </td>
-      <td>
-        <center>bargav@mail.com</center>
+        <%= doctor.name %>
       </td>
       <td>
-        <center>mbbs</center>
+        <%= doctor.email %>
       </td>
       <td>
-        <center>neurology</center>
+        <%= doctor.qualification %>
       </td>
       <td>
-        <center>studyCertificate.pdf</center>
+        <%= doctor.department %>
       </td>
-    </tr>
-    <tr>
-      <td>
-        <center>2</center>
-      </td>
-      <td class="doc">
-        <center>charan</center>
-      </td>
-      <td>
-        <center>charan@gmail.com</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-      <td>
-        <center>Cardiology</center>
-      </td>
-      <td>
-        <center>studyCertificate.pdf</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>3</center>
-      </td>
-      <td class="doc">
-        <center>abcd</center>
-      </td>
-      <td>
-        <center>abcd@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-      <td>
-        <center>Anesthesiology</center>
-      </td>
-      <td>
-        <center>Certificate.pdf</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>4</center>
-      </td>
-      <td class="doc">
-        <center>pqrs</center>
-      </td>
-      <td>
-        <center>pqrs@gmailc.om</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-      <td>
-        <center>Anesthesiology</center>
-      </td>
-      <td>
-        <center>cert.pdf</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>5</center>
-      </td>
-      <td class="doc">
-        <center>xyz</center>
-      </td>
-      <td>
-        <center>xyz@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-      <td>
-        <center>Cardiology</center>
-      </td>
-      <td>
-        <center>studyCertificate.pdf</center>
-      </td>
-    </tr>
+
+      <%})%>
+
     </tbody>
   </table>
+
   <br> <br>
-  <input type="text" id="firstname1" placeholder="Enter Doctor Id" /><br>
-  <button class="button button3">Remove doctor</button>
+  <form action="" method="post">
+    <input id="docid" placeholder="Enter Doctor Id" name="docname" /><br>
+    <button type="submit" id="docID" class="button button3">Remove doctor</button>
+  </form>
 </div>
 
 
@@ -569,96 +309,37 @@
   <div class="remp">
     <strong style="font-size: 60px;">Remove Patient</strong>
   </div>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for patient names.."
-         title="Type in a name">
-
-  <table class="table4">
+  <input type="text" id="myInput2" onkeyup="clickFunction()" placeholder="Search patient name.." title="in a name">
+  <br><br>
+  <table class="table4" id="table4">
     <thead>
     <tr class="bg-light">
-      <th scope="col" width="10%">s.no</th>
+      <th scope="col" width="10%">patient id</th>
       <th scope="col" width="10%">name</th>
       <th scope="col" width="10%">email</th>
-      <th scope="col" width="20%">Doctors<br>consulted</th>
     </tr>
     </thead>
     <tbody>
+    <%patientsList.forEach(patient=> {%>
     <tr>
+      <th scope="row">
+        <%= patient._id%>
+      </th>
       <td>
-        <center>1</center>
+        <%= patient.name %>
       </td>
       <td>
-        <center>bargav</center>
+        <%= patient.email %>
       </td>
-      <td>
-        <center>bargav@mail.com</center>
-      </td>
-      <td>
-        <center>mbbs</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>2</center>
-      </td>
-      <td>
-        <center>charan</center>
-      </td>
-      <td>
-        <center>charan@gmail.com</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>3</center>
-      </td>
-      <td>
-        <center>abcd</center>
-      </td>
-      <td>
-        <center>abcd@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>4</center>
-      </td>
-      <td>
-        <center>pqrs</center>
-      </td>
-      <td>
-        <center>pqrs@gmailc.om</center>
-      </td>
-      <td>
-        <center>MD</center>
-      </td>
-
-    </tr>
-    <tr>
-      <td>
-        <center>5</center>
-      </td>
-      <td>
-        <center>xyz</center>
-      </td>
-      <td>
-        <center>xyz@gmail.com</center>
-      </td>
-      <td>
-        <center>MBBS</center>
-      </td>
-    </tr>
+      <%})%>
     </tbody>
   </table>
 
   <br> <br>
-  <input type="text" id="firstname" placeholder="Enter email id" /><br>
-  <button class="button button3">Remove Patient</button>
+  <form action=" " method="post">
+    <input id="patid" placeholder="Enter Patient Id" name="patname" /><br>
+    <button type="submit" id="patID" class="button button3">Remove Patient</button>
+  </form>
 </div>
 
 
@@ -670,26 +351,6 @@
     sidebar.classList.toggle("open");
     menuBtnChange();
   });
-
-  function myFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("t3");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-
 
   document.getElementById("qu").addEventListener("click", function () {
     document.getElementById("tb1").style.display = "block";
@@ -719,6 +380,130 @@
     document.getElementById("tb3").style.display = "none";
     document.getElementById("tb4").style.display = "block";
   })
+  z
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function clickFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  document.getElementById('queryID').addEventListener("click", async (e) => {
+    e.preventDefault();
+    const rawResponse = await fetch('/admin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ queryid: document.getElementById('queryid').value })
+    });
+    const content = await rawResponse.json();
+    if (content.status == 'true') {
+      window.location.href = "/admin"
+    }
+    else {
+      console.log("Failed please try again")
+      window.location.href = "/admin"
+
+    }
+  })
+
+  document.getElementById('docdID').addEventListener("click", async (e) => {
+    e.preventDefault();
+    const rawResponse = await fetch('/admin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ docdid: document.getElementById('docdid').value })
+    });
+    const content = await rawResponse.json();
+    if (content.status == 'true') {
+      window.location.href = "/admin"
+    }
+    else {
+      console.log("Failed please try again")
+      window.location.href = "/admin"
+
+    }
+  })
+
+
+  document.getElementById('docID').addEventListener("click", async (e) => {
+    e.preventDefault();
+    const rawResponse = await fetch('/admin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ docid: document.getElementById('docid').value })
+    });
+    const content = await rawResponse.json();
+    if (content.status == 'true') {
+      window.location.href = "/admin"
+    }
+    else {
+      console.log("Failed please try again")
+      window.location.href = "/admin"
+
+    }
+  })
+
+  document.getElementById('patID').addEventListener("click", async (e) => {
+    e.preventDefault();
+    const rawResponse = await fetch('/admin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ patid: document.getElementById('patid').value })
+    });
+    const content = await rawResponse.json();
+    if (content.status == 'true') {
+      window.location.href = "/admin"
+    }
+    else {
+      console.log("Failed please try again")
+      window.location.href = "/admin"
+
+    }
+  })
+
 
 
 </script>

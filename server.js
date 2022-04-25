@@ -10,6 +10,12 @@ const Shedule=require('./models/shedule');
 const available= require('./models/docAvaliable');
 const pastApt=require('./models/pastApt');
 const message=require('./models/msg');
+const Query = require('./models/query');
+const DupDoctor = require('./models/dupDoc');
+//var ObjectId = require('mongodb').ObjectID;
+const { stringify } = require('nodemon/lib/utils');
+const { ObjectID } = require('bson');
+
 let nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -41,8 +47,88 @@ app.get('/',(req,res)=>{
 app.get('/forget',(req,res)=>{
     res.sendFile('views/forget.html',{root:__dirname})
 })
-app.get('/admin',(req,res)=>{
-    res.sendFile('views/admin.html',{root:__dirname})
+app.get('/admin', (req, res) => {
+    Query.find({}, (err, qu) => {
+        Patient.find({}, (err, pat) => {
+            Doctor.find({}, (err, doc) => {
+                DupDoctor.find({}, function (err, dupdoctors) {
+                    res.render('admin', {
+                        dupdoctorsList: dupdoctors,
+                        patientsList: pat,
+                        queriesList: qu,
+                        doctorsList: doc
+                    })
+                })
+            })
+        })
+    })
+})
+app.post('/admin', async (req, res) => {
+
+    Query.deleteOne({ _id: ObjectID(req.body.queryname) }, (err, data) => {
+        console.log("Doctor with id" + req.body.queryname + "is removed")
+    })
+
+    Doctor.deleteOne({ _id: ObjectID(req.body.docname) }, (err, data) => {
+        console.log("Doctor with id" + req.body.docname + "is removed")
+    })
+
+    if(req.body.docdname!=undefined){
+        DupDoctor.findOne({ _id: ObjectID(req.body.docdname) })
+            .then(doc => {
+                if(doc.email!=null){
+                    console.log(doc.email);
+
+                    Doctor.insertMany([doc])
+                        .then(d => {
+                            console.log("Saved Successfully");
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                    let mailOptions = {
+                        from: 'sricharand01@gmail.com',
+                        to: doc.email,
+                        subject: 'Accout',
+                        text: 'Your account is ready'
+                    };
+
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                    });
+
+                    DupDoctor.deleteOne({ _id: ObjectID(req.body.docdname) })
+                        .then(d => {
+                            console.log("Removed succesfully")
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }})
+    }
+
+
+    Patient.deleteOne({ _id: ObjectID(req.body.patname) }, (err, data) => {
+        console.log("Patient with id" + req.body.patname + "is removed")
+    })
+
+    res.redirect('/admin')
+})
+
+app.post('/', (req, res) => {
+
+    console.log(req.body)
+    Query.insertMany([{
+        email: req.body.emaiil,
+        name: req.body.namee,
+        phone: req.body.phonee,
+        query: req.body.queryy,
+    }])
+
 })
 app.post('/forget',async (req,res)=>{
 console.log(req.body)
@@ -135,6 +221,7 @@ console.log(req.body)
 
 
 })
+
 app.get('/signup',(req,res)=>{
     res.sendFile('views/signup.html',{root:__dirname})
 })
