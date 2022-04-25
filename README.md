@@ -29,7 +29,7 @@ Add following routes for Home page in your browser
 Add following routes for admin page in your browser
 
 ```sh
-'http://localhost:3000//admin'
+'http://localhost:3000/admin'
 ```
 Github Link
 
