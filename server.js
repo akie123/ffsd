@@ -532,7 +532,7 @@ app.post('/signup',(async (req, res) => {
 app.post('/signupd',(async (req, res) => {
     console.log(req.body);
 
-    await Doctor.insertMany([{
+    await DupDoctor.insertMany([{
         email: req.body.email,
         password: req.body.pass1,
         name: req.body.name,
