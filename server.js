@@ -153,7 +153,7 @@ app.get('/doctorportal',(req,res)=>{
                 Shedule.find({id: req.cookies.Did},(err,data1)=>{
                     console.log(data1)
                     Doctor.findOne({_id: req.cookies.Did}, (err, data) => {
-                        res.render('doctorPortal', {data: data,data1: data1,pat:data2,past:data3,moment: moment })
+                        res.render('doctorPortal', {data: data,data1: data1,pat:data2,past:data3,msg:msg,moment: moment })
                     })
                 }).sort({slot :'asc'})
             })
@@ -176,7 +176,7 @@ app.get('/patientportal',(req,res)=>{
            Doctor.find({},(err,data)=>{
 
                Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
-                   res.render('patientPortal',{data:data,pdata:data1,past:data3,moment:moment})
+                   res.render('patientPortal',{data:data,pdata:data1,past:data3,msg:msg,moment:moment})
                })
            })
        }).sort({date:'asc',slot:'asc'})

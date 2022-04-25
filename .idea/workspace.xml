@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65dcd6c8-fe23-46d6-abb4-ac004e2e43d6" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/public/doctorportal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/doctorportal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/doctorPortal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/doctorPortal.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/patientPortal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/patientPortal.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

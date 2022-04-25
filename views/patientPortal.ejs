@@ -532,109 +532,26 @@
             <table class="table table-bordered">
               <thead>
               <tr>
-                <th class="tc3">Message ID</th>
                 <th class="tc3">Message</th>
-                <th class="tc3">Status</th>
               </tr>
               </thead>
               <tbody id="myTable" class="tbody">
-              <tr>
-                <td>1</td>
-                <td>Your Message will be displayed here</td>
-                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
-              </tr>
+              <% msg.forEach(function(ms) {%>
+                <% data.forEach(function(doc) { %>
 
-              <tr>
-                <td>2</td>
-                <td>Your Message will be displayed here</td>
-                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
-              </tr>
+                  <% if(doc._id == ms.idd) { %>
+                    <tr>
+                      <td><%= ('Your Appointment with Dr.'+ doc.name+' at '+ms.slot+' has been cancelled.') %></td>
+                    </tr>
 
-              <tr>
-                <td>3</td>
-                <td>Your Message will be displayed here</td>
-                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
-              </tr>
+                <% }}) %>
 
-              <tr>
-                <td>4</td>
-                <td>Your Message will be displayed here</td>
-                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
-              </tr>
-
+              <% }) %>
               </tbody>
             </table>
           </div>
 
-          <div class="mcont">
 
-            <h1>Permissions</h1>
-            <br>
-            <table class="table table-bordered">
-              <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Doctor Name</th>
-                <th>Approval</th>
-                <th>Action</th>
-              </tr>
-              </thead>
-              <tbody class="tbody">
-              <tr>
-                <td>1</td>
-                <td>Dr.ABC</td>
-                <td>
-                Dr.ABC has requested to view your profile
-
-                </td>
-                <td>  <div class="row butr">
-                    <button class="btn btn-success btnp">Accept</button>
-                    <button class="btn btn-danger btnp">Reject</button>
-                  </div></td>
-              </tr>
-
-              <tr>
-                <td>2</td>
-                <td>Dr.ABC</td>
-                <td>
-                  Dr.ABC has requested to view your profile
-
-                </td>
-                <td>  <div class="row butr">
-                    <button class="btn btn-success btnp">Accept</button>
-                    <button class="btn btn-danger btnp">Reject</button>
-                  </div></td>
-              </tr>
-
-              <tr>
-                <td>3</td>
-                <td>Dr.ABC</td>
-                <td>
-                  Dr.ABC has requested to view your profile
-
-                </td>
-                <td>  <div class="row butr">
-                    <button class="btn btn-success btnp">Accept</button>
-                    <button class="btn btn-danger btnp">Reject</button>
-                  </div></td>
-              </tr>
-
-              <tr>
-                <td>4</td>
-                <td>Dr.ABC</td>
-                <td>
-              Dr.ABC has requested to view your profile
-
-                </td>
-                <td>  <div class="row butr">
-                    <button class="btn btn-success btnp">Accept</button>
-                    <button class="btn btn-danger btnp">Reject</button>
-                  </div></td>
-              </tr>
-              </tbody>
-            </table>
-
-          </div>
         </div>
 
 

@@ -305,13 +305,13 @@
                                 <% } %>
                                 <% let b = papp.slot.substring(2) %>
                                 <% b = (a+b).substring(0,5) %>
-                                <% if((b > moment().subtract(1,'days').format('HH:mm')) && papp.status==true) { %>
-                                    <%  patient.forEach(function(pat) { %>
-                                        <%   if((pat._id == papp.idp) ) {%>
+                                <% if((b > moment().subtract(1,'days').format('HH:mm')) && papp.status==true && (moment(papp.date).format('Do MMMM,YYYY') == moment().format('Do MMMM,YYYY') )) { %>
+                                    <%  pat.forEach(function(pat1) { %>
+                                        <%   if((pat1._id == papp.idp) ) {%>
 
                                             <tr>
-                                                <td><%= pat.name %></td>
-                                                <td><%= pat.phone %></td>
+                                                <td><%= pat1.name %></td>
+                                                <td><%= pat1.phone %></td>
                                                 <td><%= papp.slot %></td>
                                             </tr>
                             <%  }})}}) %>
@@ -331,39 +331,25 @@
                     <br>
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th class="tc3">Message ID</th>
-                                <th class="tc3">Message</th>
-                                <th class="tc3">Status</th>
-                            </tr>
+                        <tr>
+                            <th class="tc3">Message</th>
+                        </tr>
                         </thead>
                         <tbody id="myTable2" class="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>Your Message will be displayed here</td>
-                                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
-                            </tr>
+                        <% msg.forEach(function(ms) { %>
 
-                            <tr>
-                                <td>2</td>
-                                <td>Your Message will be displayed here</td>
-                                <td class="tc3"><i class="fa-solid fa-envelope icon"></i></td>
-                            </tr>
+                            <% pat.forEach(function(pt) { %>
+                                <% if(ms.idp == pt._id) { %>
+                                    <tr>
+                                        <td><%= ('Your Appointment with Patient '+pt.name+' at '+ms.slot+' has been cancelled. Slot is available for booking now')%></td>
+                                    </tr>
 
-                            <tr>
-                                <td>3</td>
-                                <td>Your Message will be displayed here</td>
-                                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
-                            </tr>
+                            <% }})%>
 
-                            <tr>
-                                <td>4</td>
-                                <td>Your Message will be displayed here</td>
-                                <td class="tc3"><i class="fa-solid fa-envelope-open icon"></i></td>
-                            </tr>
-
+                        <% })%>
                         </tbody>
                     </table>
+
                 </div>
 
                 <!--cancel appointments-->
