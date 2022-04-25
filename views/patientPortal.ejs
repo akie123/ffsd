@@ -102,6 +102,9 @@
 
 
             </div>
+            <div class="form-group">
+              <button type="button" id="getavb" class="btn btn-primary btn-app">Get Availability</button>
+            </div>
 
 
             <div class="form-group">
@@ -110,22 +113,20 @@
               <label for="slot2"  >Select Slot</label>
               <select class="form-control" id="slot2">
                 <option disabled selected hidden>Select Available slots</option>
-                <option>08:00-08:30</option>
-                <option>08:30-09:00</option>
-                <option>09:00-09:30</option>
-                <option>10:00-10:30</option>
-                <option>10:30-11:00</option>
-                <option>11:00-11:30</option>
-                <option>11:30-12:00</option>
-                <option>18:00-18:30</option>
-                <option>18:30-19:00</option>
-                <option>19:00-19:30</option>
-                <option>20:00-20:30</option>
-                <option>20:30-21:00</option>
-                <option>21:00-21:30</option>
-                <option>21:30-22:00</option>
-
-
+                <% let temp_arr = ["08:00-08:30","08:30-09:00","09:00-09:30","09:30-10:00","10:00-10:30","10:30-11:00","11:00-11:30","11:30-12:00","18:00-18:30","18:30-19:00","19:00-19:30","19:30-20:00","20:00-20:30","20:30-21:00","21:00-21:30","21:30-22:00"]%>
+                <% for(let i=0;i<temp_arr.length;i++) {%>
+                  <% let a = temp_arr[i] %>
+                  <% a = a.substring(0,2) %>
+                  <% a = parseInt(a) - 1 %>
+                  <% a = a.toString() %>
+                  <% if(a.length == 1) {%>
+                    <% a = "0"+a %>
+                  <% } %>
+                  <% let b = temp_arr[i].substring(2) %>
+                  <% b = a+b; b = b.substring(0,5) %>
+                  <%  if(b > moment().subtract(1, 'days').format('HH:mm') ) { %>
+                  <option><%=temp_arr[i]%></option>
+                <% }} %>
               </select>
             </div>
 
@@ -140,23 +141,39 @@
         </div>
 
 
-        <!-- upcoming       -->
+        <!-- upcoming -->
 
         <div class="upcoming" id="upcoming">
           <h1> Hey <%=pdata.name%> , Welcome Back! </h1>
           <br>
-          <h5>Next Appointment</h5>
-          <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
 
-          <h5><i class="fas fa-user-md fa-fw"></i> Dr.Random</h5>
-          <hr>
-          <h6><i class="fas fa-calendar fa-fw"></i> 10:30-10:40 pm <br>
-            <p class="text-muted">Monday,25 March 2022</p>
-          </h6>
+          <%let fl=0%>
+            <% past.forEach(function(papp){ %>
+            <% data.forEach(function(doc){%>
+              <%  if (doc._id == papp.idd&&papp.status!=false&&fl==0)  {%>
+                <h5>Next Appointment</h5>
+                <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
+                <h5><i class="fas fa-user-md fa-fw"></i><%="Dr "+doc.name %></h5>
+                <hr>
+                <h6><i class="fas fa-calendar fa-fw"></i> <%=papp.slot%> <br>
+                  <p class="text-muted"><%=moment().format('MMMM Do YYYY')%></p>
+                </h6>
+                <div class="but12">
+                  <button type="button" class="btn btn-primary btn-app">Consult Now</button>
+                </div>
+              <%fl=1%>
+            <%   }}) %>
+              <%})%>
+          <% if(fl==0){%>
 
-          <div class="but12">
-            <button type="button" class="btn btn-primary btn-app">Consult Now</button>
-          </div>
+            <h5>No Appointments made for today! </h5>
+<%}%>
+
+
+
+
+
+
 
 
 
@@ -183,29 +200,28 @@
 
                 </tr>
               </thead>
-              <tbody id="myTable1" class="tbody">
-                <tr>
-                  <td>Doe</td>
-                  <td>27/11/2021</td>
-                  <td>7:00-7:20 pm</td>
+              <tbody id="myTable3" class="tbody">
 
-                </tr>
-                <tr>
-                  <td>Doe</td>
-                  <td>27/11/2021</td>
-                  <td>7:00-7:20 pm</td>
-                </tr>
-                <tr>
-                  <td>Doe</td>
-                  <td>27/11/2021</td>
-                  <td>7:00-7:20 pm</td>
-                </tr>
-                <tr>
-                  <td>Doe</td>
-                  <td>27/11/2021</td>
-                  <td>7:00-7:20 pm</td>
-                </tr>
-
+              <% past.forEach(function(papp){ %>
+                <% if(moment(papp.date).format('Do MMMM, YYYY') == moment().format('Do MMMM, YYYY')&&papp.status==true) {%>
+                  <% let a = papp.slot.substring(0,2); %>
+                  <% a = parseInt(a) + 1; %>
+                  <% a = a.toString(); %>
+                  <% if(a.length == 1) {%>
+                    <% a = "0"+a %>
+                  <% } %>
+                  <% let b = papp.slot.substring(2); %>
+                  <% b = a+b;b = b.substring(0,5) %>
+                  <%  if(moment().subtract(1, 'days').format('HH:mm') < b)  { %>
+                    <tr>
+                      <% data.forEach(function(doc){%>
+                        <%  if (doc._id == papp.idd)  {%>
+                          <td><%= doc.name %></td>
+                      <%   }}) %>
+                      <td><%=moment(papp.date).format('Do MMMM, YYYY')%></td>
+                      <td><%=papp.slot%></td>
+                    </tr>
+              <% }}}) %>
               </tbody>
             </table>
 
@@ -233,59 +249,76 @@
               <tr>
                 <th>Doctor Id</th>
                 <th>Doctor Name</th>
-                <th>Date</th>
-                <th>Time</th>
+
+                <th>Time Slot</th>
 
               </tr>
               </thead>
               <tbody id="myTable" class="tbody">
-              <tr>
-                <td>1</td>
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Moe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-              </tr>
-
+              <%past.forEach(function(papp) {%>
+                <% if((moment(papp.date).format('Do MMMM, YYYY') == moment().format('Do MMMM, YYYY')) && papp.status==true) { %>
+                  <tr>
+                    <% let a = papp.slot.substring(0,2); %>
+                    <% a = parseInt(a) - 1; %>
+                    <% a = a.toString(); %>
+                    <% if(a.length == 1) {%>
+                      <% a = "0"+a %>
+                    <% } %>
+                    <% let b = papp.slot.substring(2); %>
+                    <% b = a+b;b = b.substring(0,5) %>
+                    <%  if(b  > moment().subtract(1, 'days').format('HH:mm') ) { %>
+                    <td><%=papp.idd %></td>
+                    <% data.forEach(function(doc){%>
+                      <%  if (doc._id == papp.idd)  {%>
+                        <td><%= doc.name %></td>
+                    <%   }}) %>
+                    <td><%= papp.slot%></td>
+                  </tr>
+              <% }}}) %>
               </tbody>
             </table>
           </div>
 
-          <form>
+          <form method="post" action="/patientportal">
             <div class="form-group">
-              <label for="docid">Doctor-Id</label>
-              <input type="text" class="form-control" id="docid" placeholder="Enter DoctorId">
+              <label for="docidc">Enter Doctor-Id of doctor you want to cancel</label>
+              <input type="text" class="form-control" id="docidc" placeholder="Enter DoctorId">
 
 
             </div>
             <div class="form-group">
-              <label for="date1">Date</label>
-              <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
+              <label for="slotc">Choose Slot of Doctor you want to cancel</label>
+              <select class="form-control" id="slotc">
+                <option disabled selected hidden>Select slot</option>
+                <option>08:00-08:30</option>
+                <option>08:30-09:00</option>
+                <option>09:00-09:30</option>
+                <option>09:30-10:00</option>
+                <option>10:00-10:30</option>
+                <option>10:30-11:00</option>
+                <option>11:00-11:30</option>
+                <option>11:30-12:00</option>
+                <option>18:00-18:30</option>
+                <option>18:30-19:00</option>
+                <option>19:00-19:30</option>
+                <option>19:30-20:00</option>
+                <option>20:00-20:30</option>
+                <option>20:30-21:00</option>
+                <option>21:00-21:30</option>
+                <option>21:30-22:00</option>
+
+
+              </select>
+
+
+
+
+
             </div>
-
-
 
 
             <div class="but12">
-              <button type="submit" class="btn btn-primary btn-app">Cancel Appointment</button>
+              <button type="button" id="cancelapt" class="btn btn-primary btn-app">Cancel Your Appointment</button>
             </div>
 
           </form>
@@ -312,47 +345,41 @@
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
-                <th>Prescription</th>
+
 
 
               </tr>
               </thead>
               <tbody id="myTable3" class="tbody">
+
+              <% past.forEach(function(papp){ %>
+                <% if(moment(papp.date).format('Do MMMM, YYYY') != moment().format('Do MMMM, YYYY')) {%>
               <tr>
-
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-                <td>Success</td>
-                <td><a href="" class="fas fa-arrow-right"></a></td>
-
-              </tr>
-              <tr>
-
-                <td>Moe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-                <td>Canceled</td>
-                <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-                <td>Canceled</td>
-                  <td><i class="fas fa-times"></i></td>
-              </tr>
-              <tr>
-
-                <td>Doe</td>
-                <td>27/11/2021</td>
-                <td>7:00-7:20 pm</td>
-                <td>Success</td>
-                <td><a href="" class="fas fa-arrow-right"></a></td>
-              </tr>
-
+                <% data.forEach(function(doc){%>
+                  <%  if (doc._id == papp.idd)  {%>
+                    <td><%= doc.name %></td>
+                <%   }}) %>
+                <td><%=moment(papp.date).format('Do MMMM, YYYY')%></td>
+                <td><%=papp.slot%></td>
+                <% if (papp.status == true) { %>
+                <td><%='Success'%></td>
+                <%  } else { %>
+                <td><%='Failed'%></td>
+                <% }} else { %>
+                  <% if(moment().subtract(1, 'days').format('HH:mm')>papp.slot.slice(6)) { %>
+                    <% data.forEach(function(doc){%>
+                      <%  if (doc._id == papp.idd)  {%>
+                        <td><%= doc.name %></td>
+                    <%   }}) %>
+                    <td><%=moment(papp.date).format('Do MMMM, YYYY')%></td>
+                    <td><%=papp.slot%></td>
+                    <% if (papp.status == true) { %>
+                    <td><%='Success'%></td>
+                    <%  } else { %>
+                    <td><%='Failed'%></td>
+                <% }}}})%>
               </tbody>
+
             </table>
           </div>
 

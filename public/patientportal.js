@@ -33,6 +33,54 @@ $(document).ready(function(){
         });
     });
 });
+document.getElementById("getavb").addEventListener("click",async function(e){
+    e.preventDefault();
+    const rawResponse = await fetch('/patientportal', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({docid:document.getElementById('docid2').value,flag:"avb"})
+
+    });
+    const content = await rawResponse.json();
+    console.log(content.status);
+    if(content.status=='ok')
+    {
+
+       window.open("/available")
+    }
+    else {
+        window.alert("Error@123")
+        window.location.href="/patientportal"
+
+    }
+})
+document.getElementById("cancelapt").addEventListener("click",async function(e){
+    e.preventDefault();
+    const rawResponse = await fetch('/patientportal', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({docid:document.getElementById('docidc').value,slot:document.getElementById('slotc').value,flag:"cancel"})
+
+    });
+    const content = await rawResponse.json();
+    console.log(content.status);
+    if(content.status=='yes')
+    {
+        window.alert("Cancelled Successfully!")
+        window.location.href="/patientportal"
+    }
+    else {
+        window.alert("Error@123/No slot found booked with doctor/check details")
+        window.location.href="/patientportal"
+
+    }
+})
 document.getElementById("cnf").addEventListener("click",async function(e){
   e.preventDefault();
   const rawResponse = await fetch('/patientportal', {

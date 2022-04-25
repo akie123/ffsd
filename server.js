@@ -165,16 +165,24 @@ pastApt.find({idp:req.cookies.id},(err2,data3)=>{
     Doctor.find({},(err,data)=>{
 
         Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
-            res.render('patientPortal',{data:data,pdata:data1,past:data3})
+            res.render('patientPortal',{data:data,pdata:data1,past:data3,moment:moment})
         })
 
 
+
+
     })
+}).sort({date:'asc',slot:'asc'})
+
 })
 
+app.get('/available',async(req,res)=>{
+    available.find({idd:req.cookies.check},(err,data)=>{
 
+            console.log(req.cookies.check)
+            res.render('avaliable',{data:data})
 
-
+    }).sort({slot:'asc'})
 })
 app.post('/doctorportal',(async (req ,res)=>{
 
@@ -324,6 +332,40 @@ app.post('/patientportal',(async (req ,res)=>{
 
 
     }
+      else if(req.body.flag=="cancel")
+      {
+          available.findOneAndUpdate({idd:req.body.docid,idp:req.cookies.id,slot:req.body.slot,available:'true'},{available:'false'},{},(err,doc)=>{
+              if(doc)
+              {
+                  let last = Date.now()- 1000*60*60*13;
+                  console.log()
+
+                  pastApt.findOneAndUpdate({idd:req.body.docid,idp:req.cookies.id,slot:req.body.slot,status:'true',created_at:{$gt:last}},{status:'false'},{},(err1,apt)=>{
+                      if(apt)
+                      {
+                          res.json({status:"yes"});
+                      }
+                      else {
+                          console.log('not2');
+                          res.json({status:"no"});
+                      }
+                  })
+
+              }
+              else
+              {
+                  console.log('not');
+                  res.json({status:"no"});
+              }
+          })
+      }
+      else if(req.body.flag=="avb")
+      {
+          console.log(req.body);
+          res.clearCookie('check');
+          res.cookie('check',req.body.docid);
+          res.json({status:"ok"});
+      }
 
 
 
