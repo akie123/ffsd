@@ -9,6 +9,7 @@ const Doctor=require('./models/doctor');
 const Shedule=require('./models/shedule');
 const available= require('./models/docAvaliable');
 const pastApt=require('./models/pastApt');
+const message=require('./models/msg');
 let nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -146,12 +147,21 @@ app.get('/signin',(req,res)=>{
 app.get('/doctorportal',(req,res)=>{
 
 
-    Shedule.find({id: req.cookies.Did},(err,data1)=>{
-       console.log(data1)
-        Doctor.findOne({_id: req.cookies.Did}, (err, data) => {
-            res.render('doctorPortal', {data: data,data1: data1,moment: moment })
-        })
-    }).sort({slot :'asc'})
+    message.find({idd: req.cookies.Did},(err5,msg)=>{
+        pastApt.find({idd: req.cookies.Did},(err3,data3)=>{
+            Patient.find({},(err2,data2)=>{
+                Shedule.find({id: req.cookies.Did},(err,data1)=>{
+                    console.log(data1)
+                    Doctor.findOne({_id: req.cookies.Did}, (err, data) => {
+                        res.render('doctorPortal', {data: data,data1: data1,pat:data2,past:data3,moment: moment })
+                    })
+                }).sort({slot :'asc'})
+            })
+        }).sort({date:'asc',slot:'asc'})
+    }).sort({date:'asc'})
+
+
+
 
 
 
@@ -161,20 +171,19 @@ app.get('/doctorportal',(req,res)=>{
 
 app.get('/patientportal',(req,res)=>{
 
-pastApt.find({idp:req.cookies.id},(err2,data3)=>{
-    Doctor.find({},(err,data)=>{
+   message.find({idp:req.cookies.id},(err5,msg)=>{
+       pastApt.find({idp:req.cookies.id},(err2,data3)=>{
+           Doctor.find({},(err,data)=>{
 
-        Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
-            res.render('patientPortal',{data:data,pdata:data1,past:data3,moment:moment})
-        })
+               Patient.findOne({_id:req.cookies.id},(err1,data1)=>{
+                   res.render('patientPortal',{data:data,pdata:data1,past:data3,moment:moment})
+               })
+           })
+       }).sort({date:'asc',slot:'asc'})
 
+   }).sort({date:'asc'})
+   })
 
-
-
-    })
-}).sort({date:'asc',slot:'asc'})
-
-})
 
 app.get('/available',async(req,res)=>{
     available.find({idd:req.cookies.check},(err,data)=>{
@@ -238,6 +247,41 @@ app.post('/doctorportal',(async (req ,res)=>{
             slot:req.body.slot
         }])
         res.json({status:"del"});
+    }
+    if(req.body.flag=="cancel")
+    {
+        console.log(req.body)
+        available.findOneAndUpdate({idd:req.cookies.Did,idp:req.body.patid,slot:req.body.slot,available:'true'},{available:'false'},{},(err,doc)=>{
+            if(doc)
+            {
+                let last = Date.now()- 1000*60*60*13;
+
+
+                pastApt.findOneAndUpdate({idd:req.cookies.Did,idp:req.body.patid,slot:req.body.slot,status:'true',created_at:{$gt:last}},{status:'false'},{},(err1,apt)=>{
+                    if(apt)
+                    {
+                        message.insertMany([{
+                            idd:req.cookies.Did,
+                            idp:req.body.patid,
+                            slot:req.body.slot,
+                            date:new Date()
+                        }])
+                        res.json({status:"yes"});
+
+                    }
+                    else {
+                        console.log('not2');
+                        res.json({status:"no"});
+                    }
+                })
+
+            }
+            else
+            {
+                console.log('not');
+                res.json({status:"no"});
+            }
+        })
     }
 
 
@@ -343,6 +387,12 @@ app.post('/patientportal',(async (req ,res)=>{
                   pastApt.findOneAndUpdate({idd:req.body.docid,idp:req.cookies.id,slot:req.body.slot,status:'true',created_at:{$gt:last}},{status:'false'},{},(err1,apt)=>{
                       if(apt)
                       {
+                          message.insertMany([{
+                              idd:req.body.docid,
+                              idp:req.cookies.id,
+                              slot:req.body.slot,
+                              date:new Date()
+                          }])
                           res.json({status:"yes"});
                       }
                       else {

@@ -45,6 +45,30 @@ document.getElementById('changes').addEventListener("click",async (e)=>{
 
     }
 })
+document.getElementById("cancelapt").addEventListener("click",async function(e){
+    e.preventDefault();
+    const rawResponse = await fetch('/doctorportal', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({patid:document.getElementById('patidc').value,slot:document.getElementById('slotc').value,flag:"cancel"})
+
+    });
+    const content = await rawResponse.json();
+    console.log(content.status);
+    if(content.status=='yes')
+    {
+        window.alert("Cancelled Successfully!")
+        window.location.href="/doctorportal"
+    }
+    else {
+        window.alert("Error@123/No slot found booked with patient/check details")
+        window.location.href="/doctorportal"
+
+    }
+})
 document.getElementById('butslot').addEventListener("click",async (e)=>{
     e.preventDefault();
     const rawResponse = await fetch('/doctorportal', {

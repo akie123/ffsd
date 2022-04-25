@@ -57,8 +57,7 @@
                                 class="fa-solid fa-message">
                             </i> Message</a>
                         <a href="#" class="list-group-item list-group-item-action" onclick="pastapp()"><i
-                                class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment <br> and send <br>
-                            Prescription</a>
+                                class="fa-solid fa-clock-rotate-left fa-fw"></i> Past Appointment </a>
                         <br>
                         <div class="logout">
                             <a href="/" class="list-group-item list-group-item-action"><i
@@ -234,17 +233,44 @@
                 <div class="upcoming container-fluid" id="upcoming">
                     <h2> Hey Dr.<%=data.name%>, Welcome Back!</h2>
                     <br>
-                    <h5>Next Patient</h5>
 
-                    <h5><i class="fa-solid fa-user"></i>Patient</h5>
-                    <hr>
-                    <h6><i class="fas fa-calendar fa-fw"></i> 10:30-10:40 pm <br>
-                        <p class="text-muted">Monday,25 March 2022</p>
-                    </h6>
 
-                    <div class="but12">
-                        <button type="button" class="btn btn-app">Consult Now</button>
-                    </div>
+                    <%let fl=0%>
+                    <% past.forEach(function(papp){ %>
+                        <% pat.forEach(function(doc){%>
+                            <%  if (doc._id == papp.idp&&papp.status!=false&&fl==0)  {%>
+                            <h5>Next Appointment</h5>
+                            <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
+                            <h5><i class="fas fa-user-md fa-fw"></i><%= doc.name %></h5>
+                            <hr>
+                            <h6><i class="fas fa-calendar fa-fw"></i> <%=papp.slot%> <br>
+                                <p class="text-muted"><%=moment().format('MMMM Do YYYY')%></p>
+                            </h6>
+                            <div class="but12">
+                                <button type="button" class="btn btn-primary btn-app">Consult Now</button>
+                            </div>
+                            <%fl=1%>
+                        <%   }}) %>
+                    <%})%>
+                    <% if(fl==0){%>
+
+                        <h5>No Appointments made for today! </h5>
+                    <%}%>
+
+
+
+
+<!--                    <h5>Next Patient</h5>-->
+
+<!--                    <h5><i class="fa-solid fa-user"></i>Patient</h5>-->
+<!--                    <hr>-->
+<!--                    <h6><i class="fas fa-calendar fa-fw"></i> 10:30-10:40 pm <br>-->
+<!--                        <p class="text-muted">Monday,25 March 2022</p>-->
+<!--                    </h6>-->
+
+<!--                    <div class="but12">-->
+<!--                        <button type="button" class="btn btn-app">Consult Now</button>-->
+<!--                    </div>-->
 
 
 
@@ -267,36 +293,28 @@
 
                                     <th>Patient Name</th>
                                     <th>Phone Number</th>
-                                    <th>Date</th>
+
                                     <th>Time</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable1" class="tbody">
-                                <tr>
-                                    <td>Patient 1</td>
-                                    <td>9090909090</td>
-                                    <td>27/11/2021</td>
-                                    <td>5:00-5:20 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Patient 2</td>
-                                    <td>9090909090</td>
-                                    <td>27/11/2021</td>
-                                    <td>5:20-5:40 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Patient 3</td>
-                                    <td>9090909090</td>
-                                    <td>27/11/2021</td>
-                                    <td>5:40-6:00 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Patient 4</td>
-                                    <td>9090909090</td>
-                                    <td>27/11/2021</td>
-                                    <td>6:00-6:20 pm</td>
-                                </tr>
+                            <% past.forEach(function(papp) { %>
+                                <% let a = parseInt(papp.slot.substring(0,2)).toString() %>
+                                <%  if(a.length == 1) { %>
+                                    <%  a = "0"+a %>
+                                <% } %>
+                                <% let b = papp.slot.substring(2) %>
+                                <% b = (a+b).substring(0,5) %>
+                                <% if((b > moment().subtract(1,'days').format('HH:mm')) && papp.status==true) { %>
+                                    <%  patient.forEach(function(pat) { %>
+                                        <%   if((pat._id == papp.idp) ) {%>
 
+                                            <tr>
+                                                <td><%= pat.name %></td>
+                                                <td><%= pat.phone %></td>
+                                                <td><%= papp.slot %></td>
+                                            </tr>
+                            <%  }})}}) %>
                             </tbody>
                         </table>
 
@@ -350,7 +368,7 @@
 
                 <!--cancel appointments-->
                 <div class="cancel" id="cancel">
-                    <h2> Cancel your scheduled appointment</h2>
+                    <h2> Cancel your scheduled appointment booked by patient</h2>
 
                     <br><br>
                     <input class="form-control" id="Input" type="text" placeholder="Search..">
@@ -363,63 +381,80 @@
                                 <tr>
                                     <th>Patient Id</th>
                                     <th>Patient Name</th>
-                                    <th>Date</th>
                                     <th>Time</th>
 
                                 </tr>
                             </thead>
-                            <tbody id="myTable3" class="tbody">
-                                <tr>
-                                    <td>1</td>
-                                    <td>Doe</td>
-                                    <td>27/11/2021</td>
-                                    <td>7:00-7:20 pm</td>
+                            <tbody id="myTable" class="tbody">
+                            <%past.forEach(function(papp) {%>
+                                <% if((moment(papp.date).format('Do MMMM, YYYY') == moment().format('Do MMMM, YYYY')) && papp.status==true) { %>
+                                    <tr>
+                                        <% let a = papp.slot.substring(0,2); %>
+                                        <% a = parseInt(a) - 1; %>
+                                        <% a = a.toString(); %>
+                                        <% if(a.length == 1) {%>
+                                            <% a = "0"+a %>
+                                        <% } %>
+                                        <% let b = papp.slot.substring(2); %>
+                                        <% b = a+b;b = b.substring(0,5) %>
+                                        <%  if(b  > moment().subtract(1, 'days').format('HH:mm') ) { %>
+                                        <td><%=papp.idp %></td>
+                                        <% pat.forEach(function(pat1){%>
 
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Moe</td>
-                                    <td>27/11/2021</td>
-                                    <td>7:00-7:20 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Doe</td>
-                                    <td>27/11/2021</td>
-                                    <td>7:00-7:20 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Doe</td>
-                                    <td>27/11/2021</td>
-                                    <td>7:00-7:20 pm</td>
-                                </tr>
-
+                                            <%  if (pat1._id == papp.idp)  {%>
+                                                <td><%= pat1.name %></td>
+                                        <%   }}) %>
+                                        <td><%= papp.slot%></td>
+                                    </tr>
+                            <% }}}) %>
                             </tbody>
+
                         </table>
                     </div>
-
-                    <form>
+<br>
+                    <form method="post" action="/patientportal">
                         <div class="form-group">
-                            <label for="docid">Doctor-Id</label>
-                            <input type="text" class="form-control" id="docid" placeholder="Enter DoctorId">
+                            <label for="patidc">Enter Patient-Id of patient you want to cancel</label>
+                            <input type="text" class="form-control" id="patidc" placeholder="Enter PatientId">
 
 
                         </div>
                         <div class="form-group">
-                            <label for="date1">Date</label>
-                            <input type="date" class="form-control" id="date1" placeholder="Date of Booking">
+                            <label for="slotc">Choose your booked slot you want to cancel</label>
+                            <select class="form-control" id="slotc">
+                                <option disabled selected hidden>Select slot</option>
+                                <option>08:00-08:30</option>
+                                <option>08:30-09:00</option>
+                                <option>09:00-09:30</option>
+                                <option>09:30-10:00</option>
+                                <option>10:00-10:30</option>
+                                <option>10:30-11:00</option>
+                                <option>11:00-11:30</option>
+                                <option>11:30-12:00</option>
+                                <option>18:00-18:30</option>
+                                <option>18:30-19:00</option>
+                                <option>19:00-19:30</option>
+                                <option>19:30-20:00</option>
+                                <option>20:00-20:30</option>
+                                <option>20:30-21:00</option>
+                                <option>21:00-21:30</option>
+                                <option>21:30-22:00</option>
+
+
+                            </select>
+
+
+
+
+
                         </div>
-
-
 
 
                         <div class="but12">
-                            <button type="submit" class="btn btn-primary btn-app">Cancel Appointment</button>
+                            <button type="button" id="cancelapt" class="btn btn-primary btn-app">Cancel Appointment of patient</button>
                         </div>
 
                     </form>
-
                 </div>
 
                 <!--Previous Appointments and send prescription-->
@@ -428,46 +463,43 @@
                     <table class="table table-bordered table1">
                         <thead>
                             <tr>
-                                <th>Patient Id</th>
+
                                 <th>Patient Name</th>
                                 <th>Date</th>
-                                <th>Time</th>
-                                <th>Add Prescription</th>
+                                <th>Time Slot</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody id="myTable" class="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>Doe</td>
-                                <td>27/11/2021</td>
-                                <td>7:00-7:20 pm</td>
-                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>Moe</td>
-                                <td>27/11/2021</td>
-                                <td>7:00-7:20 pm</td>
-                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Doe</td>
-                                <td>27/11/2021</td>
-                                <td>7:00-7:20 pm</td>
-                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td>Doe</td>
-                                <td>27/11/2021</td>
-                                <td>7:00-7:20 pm</td>
-                                <td><a><i class="fa-solid fa-arrow-right picon"></i></a></td>
-                            </tr>
-
+                        <% past.forEach(function(papp){%>
+                            <% if(moment(papp.date).format('Do MMMM, YYYY') != moment().format('Do MMMM, YYYY')) { %>
+                                <% pat.forEach(function(pat1) { %>
+                                    <% if(pat1._id == papp.idp) { %>
+                                        <tr>
+                                            <td><%= pat1.name%></td>
+                                            <td><%= moment(papp.date).format('Do MMMM, YYYY')%></td>
+                                            <td><%= papp.slot %></td>
+                                            <% if(papp.status == 'true') { %>
+                                            <td><%='Success'%></td>
+                                            <% } else { %>
+                                            <td><%='Failed'%></td>
+                                            <% } %>
+                                        </tr>
+                            <% }})} else { %>
+                                <% if(papp.slot.slice(6) < moment().format('HH:mm')) {%>
+                                    <% pat.forEach(function(pat1) { %>
+                                        <% if(pat1._id == papp.idp) { %>
+                                            <tr>
+                                                <td><%= pat1.name%></td>
+                                                <td><%= moment(papp.date).format('Do MMMM, YYYY')%></td>
+                                                <td><%= papp.slot %></td>
+                                                <% if(papp.status == 'true') { %>
+                                                <td><%='Success'%></td>
+                                                <% } else { %>
+                                                <td><%='Failed'%></td>
+                                                <% } %>
+                                            </tr>
+                        <%  }})}}}) %>
                         </tbody>
                     </table>
                 </div>
