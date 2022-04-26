@@ -131,8 +131,8 @@ document.getElementById("but-4").addEventListener("click", async function(e) {
         fl = 1;
     }
     for(let i=0;i<ph.value.length;i++){
-        let temp = ph.value.charCodeAt(i);
-        if(temp<=48 && temp>=57)
+        let temp = ph.vlaue.charAt(i);
+        if(temp<'0'&&temp>'9')
         {
             str = str + 'Phone Number must contain only numbers\n';
             fl = 1;
@@ -164,8 +164,8 @@ document.getElementById("but-4").addEventListener("click", async function(e) {
     }
 
     for(let i=0;i<ad.value.length;i++){
-        let temp = ad.value.charCodeAt(i);
-        if(temp<=48 && temp>=57)
+        let temp = ad.value.charAt(i);
+        if(temp<'0'&&temp>'9')
         {
             str = str + 'Aadhaar Card must contain only numbers\n';
             fl = 1;
