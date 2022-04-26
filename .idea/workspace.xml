@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65dcd6c8-fe23-46d6-abb4-ac004e2e43d6" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/indexd.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/indexd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/doctorPortal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/doctorPortal.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/patientPortal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/patientPortal.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/signupd.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/signupd.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +105,7 @@
       <workItem from="1650968647935" duration="125000" />
       <workItem from="1650968814645" duration="60000" />
       <workItem from="1650968877207" duration="5451000" />
+      <workItem from="1650985186323" duration="8828000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1648057259294</created>

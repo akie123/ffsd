@@ -238,19 +238,18 @@
                     <%let fl=0%>
                     <% past.forEach(function(papp){ %>
                         <% pat.forEach(function(doc){%>
-                            <%  if (doc._id == papp.idp&&papp.status!=false&&fl==0)  {%>
-
-                            <h5>Next Appointment</h5>
-                            <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
-                            <h5><i class="fas fa-user-md fa-fw"></i><%= doc.name %></h5>
-                            <hr>
-                            <h6><i class="fas fa-calendar fa-fw"></i> <%=papp.slot%> <br>
-                                <p class="text-muted"><%=moment().format('MMMM Do YYYY')%></p>
-                            </h6>
-                            <div class="but12">
-                                <button type="button" class="btn btn-primary btn-app">Consult Now</button>
-                            </div>
-                            <%fl=1%>
+                            <%  if (doc._id == papp.idp && papp.status!=false && fl==0 && papp.slot.substring(0,5) > moment().subtract(1, 'days').format('HH:mm') && moment(papp.date).format('MMMM Do YYYY') == moment().format('MMMM Do YYYY'))  {%>
+                                <h5>Next Appointment</h5>
+                                <p class="text-muted" >You can access consultation page before 5 mins of appointment time</p>
+                                <h5><i class="fas fa-user-md fa-fw"></i><%= doc.name %></h5>
+                                <hr>
+                                <h6><i class="fas fa-calendar fa-fw"></i> <%=papp.slot%> <br>
+                                    <p class="text-muted"><%=moment().format('MMMM Do YYYY')%></p>
+                                </h6>
+                                <div class="but12">
+                                    <button type="button" class="btn btn-primary btn-app">Consult Now</button>
+                                </div>
+                                <%fl=1%>
                         <%   }}) %>
                     <%})%>
                     <% if(fl==0){%>
@@ -466,7 +465,7 @@
                                             <td><%= pat1.name%></td>
                                             <td><%= moment(papp.date).format('Do MMMM, YYYY')%></td>
                                             <td><%= papp.slot %></td>
-                                            <% if(papp.status == 'true') { %>
+                                            <% if(papp.status == true) { %>
                                             <td><%='Success'%></td>
                                             <% } else { %>
                                             <td><%='Failed'%></td>
@@ -480,7 +479,7 @@
                                                 <td><%= pat1.name%></td>
                                                 <td><%= moment(papp.date).format('Do MMMM, YYYY')%></td>
                                                 <td><%= papp.slot %></td>
-                                                <% if(papp.status == 'true') { %>
+                                                <% if(papp.status == true) { %>
                                                 <td><%='Success'%></td>
                                                 <% } else { %>
                                                 <td><%='Failed'%></td>
