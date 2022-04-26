@@ -131,7 +131,7 @@ document.getElementById("but-4").addEventListener("click", async function(e) {
         fl = 1;
     }
     for(let i=0;i<ph.value.length;i++){
-        let temp = ph.vlaue.charAt(i);
+        let temp = ph.value.charAt(i);
         if(temp<'0'&&temp>'9')
         {
             str = str + 'Phone Number must contain only numbers\n';
