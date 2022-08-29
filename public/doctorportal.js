@@ -7,6 +7,9 @@ $(document).ready(function(){
   });
 });
 
+
+
+
 document.getElementById("strip").addEventListener("click", function() {
 
 

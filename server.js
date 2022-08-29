@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const moment = require('moment');
 app.set('view engine','ejs');
 const Patient=require('./models/patient');
+const patient=new Patient()
 const Doctor=require('./models/doctor');
 const Shedule=require('./models/shedule');
 const available= require('./models/docAvaliable');
@@ -39,7 +40,35 @@ mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
     })
 
 
+class Patient123 {
+    constructor(name,email,password,phone,dob,adhar,gender,allergies,medicalhistory) {
+        this.name=name
+        this.email=email
+        this.password=password
+        this.phone=phone
+        this.dob=dob
+        this.adhar=adhar
+        this.gender=gender
+        this.allergies=allergies
+        this.medicalhistory=medicalhistory
 
+    }
+}
+class Doctor123{
+
+    constructor(name,email,password,phone,dob,adhar,gender,qu,dep,exp) {
+        this.name=name
+        this.email=email
+        this.password=password
+        this.phone=phone
+        this.dob=dob
+        this.adhar=adhar
+        this.gender=gender
+        this.experience=exp
+        this.qualification=qu
+        this.department=dep
+    }
+}
 app.use(express.static('public'))
 app.get('/',(req,res)=>{
     res.sendFile('views/home.html',{root:__dirname})
@@ -203,21 +232,12 @@ app.post('/doctorportal',(async (req ,res)=>{
 
       if(req.body.flag=='info')
       {
-          console.log(req.body)
-          let up={
 
-              password: req.body.pass1,
-              name: req.body.name,
-              phone: req.body.phno,
-              dob: req.body.dob,
-              gender: req.body.gender,
-              adhar: req.body.adhar,
-              qualification: req.body.qualification,
-              department:req.body.department,
-              experience:req.body.experience
+          let docObj= new Doctor123(req.body.name,undefined, req.body.pass1,req.body.phno,req.body.dob,req.body.adhar,req.body.gender,req.body.qualification,req.body.department,req.body.experience)
+          delete docObj.email
+          console.log(docObj)
 
-          }
-          Doctor.findByIdAndUpdate(req.cookies.Did,up,(err,data)=>{
+          Doctor.findByIdAndUpdate(req.cookies.Did,docObj,(err,data)=>{
               if (err){
                   console.log(err)
               }
@@ -293,23 +313,25 @@ app.post('/doctorportal',(async (req ,res)=>{
 }))
 app.post('/patientportal',(async (req ,res)=>{
 
-
       if(req.body.flag=='info')
       {
-          console.log(req.body)
-          let up={
-
-
-            password: req.body.pass1,
-            name: req.body.name,
-            phone: req.body.phno,
-            dob: req.body.dob,
-            adhar: req.body.adno,
-            gender: req.body.gender,
-
-
-          }
-          Patient.findByIdAndUpdate(req.cookies.id,up,(err,data)=>{
+          let patObj = new Patient123( req.body.name,null,req.body.pass1, req.body.phno, req.body.dob,req.body.adno,req.body.gender,null,null)
+          delete patObj.medicalhistory
+          delete patObj.allergies
+          delete patObj.email
+          // let up={
+          //
+          //
+          //   password: req.body.pass1,
+          //   name: req.body.name,
+          //   phone: req.body.phno,
+          //   dob: req.body.dob,
+          //   adhar: req.body.adno,
+          //   gender: req.body.gender,
+          //
+          //
+          // }
+          Patient.findByIdAndUpdate(req.cookies.id,patObj,(err,data)=>{
               if (err){
                   console.log(err)
               }
@@ -425,46 +447,17 @@ app.post('/patientportal',(async (req ,res)=>{
 
 
 }))
-
 app.post('/signup',(async (req, res) => {
-
     console.log(req.body);
-
-    await Patient.insertMany([{
-        email: req.body.email,
-        password: req.body.pass1,
-        name: req.body.name,
-        phone: req.body.phno,
-        dob: req.body.dob,
-        adhar: req.body.adno,
-        gender: req.body.gender,
-        allergies: req.body.allergies,
-        medicalhistory: req.body.history
-
-    }])
-
-
-
+    let patObj = new Patient123( req.body.name,req.body.email,req.body.pass1, req.body.phno, req.body.dob,req.body.adno,req.body.gender,req.body.allergies,req.body.history)
+    await Patient.insertMany([patObj])
     res.json({status:"working"});
 }))
 app.post('/signupd',(async (req, res) => {
-    console.log(req.body);
 
-    await DupDoctor.insertMany([{
-        email: req.body.email,
-        password: req.body.pass1,
-        name: req.body.name,
-        phone: req.body.phno,
-        dob: req.body.dob,
-        gender: req.body.gender,
-        adhar: req.body.adhar,
-        qualification: req.body.qualification,
-        department:req.body.department,
-        experience:req.body.experience
+    let docObj= new Doctor123(req.body.name,req.body.email, req.body.pass1,req.body.phno,req.body.dob,req.body.adhar,req.body.gender,req.body.qualification,req.body.department,req.body.experience)
 
-
-
-    }])
+    await DupDoctor.insertMany([docObj])
 
 
     res.json({status:"working"});
@@ -481,9 +474,7 @@ app.post('/signin',(async (req,res)=>{
        password:req.body.password
    }
 
-   // Patient.find({},function (err,user){
-   //     console.log(user)
-   // })
+
 let to=0;
     Patient.findOne(data, function(err, user) {
         if (err) {

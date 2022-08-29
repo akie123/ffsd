@@ -48,8 +48,7 @@ document.getElementById("getavb").addEventListener("click",async function(e){
     console.log(content.status);
     if(content.status=='ok')
     {
-
-       window.open("/available")
+        window.open("/available")
     }
     else {
         window.alert("Error@123")
